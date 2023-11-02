@@ -1,0 +1,16 @@
+**/.iml
+**/.exercism
+**/.pytest_cache
+**/.idea
+
+**/HELP.md
+**/HINTS.md
+**/README.md
+**/TUTORIAL.md
+
+**/gradle
+**/gradlew.bat
+**/build
+
+**/Gemfile.lock
+
