@@ -1,6 +1,8 @@
 import unittest
+
 import pytest
-from tuples import get_coordinate, convert_coordinate, compare_records, create_record, clean_up
+
+from tuples import get_coordinate, convert_coordinate, compare_records, create_record, clean_up, clean_up_record, remove_redundant_coordinate
 
 
 class TisburyTreasureTest(unittest.TestCase):
@@ -28,7 +30,7 @@ class TisburyTreasureTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', item=item, result=result):
                 self.assertEqual(get_coordinate(item), result)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=2)
     def test_convert_coordinate(self):
         input_data = ['2A', '4B', '1C', '6D', '7E', '7F', '6A', '8A', '5B', '8C', '1F', '3D', '4E']
@@ -52,20 +54,20 @@ class TisburyTreasureTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', item=item, result=result):
                 self.assertEqual(convert_coordinate(item), result)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=3)
     def test_compare_records(self):
         input_data = [
-                (('Scrimshawed Whale Tooth', '2A'), ('Deserted Docks', ('2', 'A'), 'Blue')),
-                (('Brass Spyglass', '4B'), ('Abandoned Lighthouse', ('4', 'B'), 'Blue')),
-                (('Robot Parrot', '1C'), ('Seaside Cottages', ('1', 'C'), 'Blue')),
-                (('Glass Starfish', '6D'), ('Tangled Seaweed Patch', ('6', 'D'), 'Orange')),
-                (('Vintage Pirate Hat', '7E'), ('Quiet Inlet (Island of Mystery)', ('7', 'E'), 'Orange')),
-                (('Amethyst  Octopus', '1F'), ('Seaside Cottages', ('1', 'C'), 'Blue')),
-                (('Angry Monkey Figurine', '5B'), ('Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow')),
-                (('Antique Glass Fishnet Float', '3D'), ('Deserted Docks', ('2', 'A'), 'Blue')),
-                (('Brass Spyglass', '4B'), ('Spiky Rocks', ('3', 'D'), 'Yellow')),
-                (('Carved Wooden Elephant', '8C'), ('Abandoned Lighthouse', ('4', 'B'), 'Blue'))
+            (('Scrimshawed Whale Tooth', '2A'), ('Deserted Docks', ('2', 'A'), 'Blue')),
+            (('Brass Spyglass', '4B'), ('Abandoned Lighthouse', ('4', 'B'), 'Blue')),
+            (('Robot Parrot', '1C'), ('Seaside Cottages', ('1', 'C'), 'Blue')),
+            (('Glass Starfish', '6D'), ('Tangled Seaweed Patch', ('6', 'D'), 'Orange')),
+            (('Vintage Pirate Hat', '7E'), ('Quiet Inlet (Island of Mystery)', ('7', 'E'), 'Orange')),
+            (('Amethyst  Octopus', '1F'), ('Seaside Cottages', ('1', 'C'), 'Blue')),
+            (('Angry Monkey Figurine', '5B'), ('Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow')),
+            (('Antique Glass Fishnet Float', '3D'), ('Deserted Docks', ('2', 'A'), 'Blue')),
+            (('Brass Spyglass', '4B'), ('Spiky Rocks', ('3', 'D'), 'Yellow')),
+            (('Carved Wooden Elephant', '8C'), ('Abandoned Lighthouse', ('4', 'B'), 'Blue'))
         ]
         result_data = [True, True, True, True, True, False, False, False, False, False]
         number_of_variants = range(1, len(input_data) + 1)
@@ -74,32 +76,32 @@ class TisburyTreasureTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', item=item, result=result):
                 self.assertEqual(compare_records(item[0], item[1]), result)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=4)
     def test_create_record(self):
         input_data = [
-                (('Angry Monkey Figurine', '5B'), ('Stormy Breakwater', ('5', 'B'), 'Purple')),
-                (('Carved Wooden Elephant', '8C'), ('Foggy Seacave', ('8', 'C'), 'Purple')),
-                (('Amethyst  Octopus', '1F'), ('Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow')),
-                (('Antique Glass Fishnet Float', '3D'), ('Spiky Rocks', ('3', 'D'), 'Yellow')),
-                (('Silver Seahorse', '4E'), ('Hidden Spring (Island of Mystery)', ('4', 'E'), 'Yellow')),
-                (('Amethyst  Octopus', '1F'), ('Seaside Cottages', ('1', 'C'), 'Blue')),
-                (('Angry Monkey Figurine', '5B'), ('Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow')),
-                (('Antique Glass Fishnet Float', '3D'), ('Deserted Docks', ('2', 'A'), 'Blue')),
-                (('Brass Spyglass', '4B'), ('Spiky Rocks', ('3', 'D'), 'Yellow')),
-                (('Carved Wooden Elephant', '8C'), ('Abandoned Lighthouse', ('4', 'B'), 'Blue'))
+            (('Angry Monkey Figurine', '5B'), ('Stormy Breakwater', ('5', 'B'), 'Purple')),
+            (('Carved Wooden Elephant', '8C'), ('Foggy Seacave', ('8', 'C'), 'Purple')),
+            (('Amethyst  Octopus', '1F'), ('Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow')),
+            (('Antique Glass Fishnet Float', '3D'), ('Spiky Rocks', ('3', 'D'), 'Yellow')),
+            (('Silver Seahorse', '4E'), ('Hidden Spring (Island of Mystery)', ('4', 'E'), 'Yellow')),
+            (('Amethyst  Octopus', '1F'), ('Seaside Cottages', ('1', 'C'), 'Blue')),
+            (('Angry Monkey Figurine', '5B'), ('Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow')),
+            (('Antique Glass Fishnet Float', '3D'), ('Deserted Docks', ('2', 'A'), 'Blue')),
+            (('Brass Spyglass', '4B'), ('Spiky Rocks', ('3', 'D'), 'Yellow')),
+            (('Carved Wooden Elephant', '8C'), ('Abandoned Lighthouse', ('4', 'B'), 'Blue'))
         ]
         result_data = [
-                ('Angry Monkey Figurine', '5B', 'Stormy Breakwater', ('5', 'B'), 'Purple'),
-                ('Carved Wooden Elephant', '8C', 'Foggy Seacave', ('8', 'C'), 'Purple'),
-                ('Amethyst  Octopus', '1F', 'Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow'),
-                ('Antique Glass Fishnet Float', '3D', 'Spiky Rocks', ('3', 'D'), 'Yellow'),
-                ('Silver Seahorse', '4E', 'Hidden Spring (Island of Mystery)', ('4', 'E'), 'Yellow'),
-                'not a match',
-                'not a match',
-                'not a match',
-                'not a match',
-                'not a match'
+            ('Angry Monkey Figurine', '5B', 'Stormy Breakwater', ('5', 'B'), 'Purple'),
+            ('Carved Wooden Elephant', '8C', 'Foggy Seacave', ('8', 'C'), 'Purple'),
+            ('Amethyst  Octopus', '1F', 'Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow'),
+            ('Antique Glass Fishnet Float', '3D', 'Spiky Rocks', ('3', 'D'), 'Yellow'),
+            ('Silver Seahorse', '4E', 'Hidden Spring (Island of Mystery)', ('4', 'E'), 'Yellow'),
+            'not a match',
+            'not a match',
+            'not a match',
+            'not a match',
+            'not a match'
         ]
 
         number_of_variants = range(1, len(input_data) + 1)
@@ -108,23 +110,23 @@ class TisburyTreasureTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', item=item, result=result):
                 self.assertEqual(create_record(item[0], item[1]), result)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=5)
     def test_clean_up(self):
         input_data = (
-                ('Scrimshawed Whale Tooth', '2A', 'Deserted Docks', ('2', 'A'), 'Blue'),
-                ('Brass Spyglass', '4B', 'Abandoned Lighthouse', ('4', 'B'), 'Blue'),
-                ('Robot Parrot', '1C', 'Seaside Cottages', ('1', 'C'), 'Blue'),
-                ('Glass Starfish', '6D', 'Tangled Seaweed Patch', ('6', 'D'), 'Orange'),
-                ('Vintage Pirate Hat', '7E', 'Quiet Inlet (Island of Mystery)', ('7', 'E'), 'Orange'),
-                ('Pirate Flag', '7F', 'Windswept Hilltop (Island of Mystery)', ('7', 'F'), 'Orange'),
-                ('Crystal Crab', '6A', 'Old Schooner', ('6', 'A'), 'Purple'),
-                ('Model Ship in Large Bottle', '8A', 'Harbor Managers Office', ('8', 'A'), 'Purple'),
-                ('Angry Monkey Figurine', '5B', 'Stormy Breakwater', ('5', 'B'), 'Purple'),
-                ('Carved Wooden Elephant', '8C', 'Foggy Seacave', ('8', 'C'), 'Purple'),
-                ('Amethyst  Octopus', '1F', 'Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow'),
-                ('Antique Glass Fishnet Float', '3D', 'Spiky Rocks', ('3', 'D'), 'Yellow'),
-                ('Silver Seahorse', '4E', 'Hidden Spring (Island of Mystery)', ('4', 'E'), 'Yellow')
+            ('Scrimshawed Whale Tooth', '2A', 'Deserted Docks', ('2', 'A'), 'Blue'),
+            ('Brass Spyglass', '4B', 'Abandoned Lighthouse', ('4', 'B'), 'Blue'),
+            ('Robot Parrot', '1C', 'Seaside Cottages', ('1', 'C'), 'Blue'),
+            ('Glass Starfish', '6D', 'Tangled Seaweed Patch', ('6', 'D'), 'Orange'),
+            ('Vintage Pirate Hat', '7E', 'Quiet Inlet (Island of Mystery)', ('7', 'E'), 'Orange'),
+            ('Pirate Flag', '7F', 'Windswept Hilltop (Island of Mystery)', ('7', 'F'), 'Orange'),
+            ('Crystal Crab', '6A', 'Old Schooner', ('6', 'A'), 'Purple'),
+            ('Model Ship in Large Bottle', '8A', 'Harbor Managers Office', ('8', 'A'), 'Purple'),
+            ('Angry Monkey Figurine', '5B', 'Stormy Breakwater', ('5', 'B'), 'Purple'),
+            ('Carved Wooden Elephant', '8C', 'Foggy Seacave', ('8', 'C'), 'Purple'),
+            ('Amethyst  Octopus', '1F', 'Aqua Lagoon (Island of Mystery)', ('1', 'F'), 'Yellow'),
+            ('Antique Glass Fishnet Float', '3D', 'Spiky Rocks', ('3', 'D'), 'Yellow'),
+            ('Silver Seahorse', '4E', 'Hidden Spring (Island of Mystery)', ('4', 'E'), 'Yellow')
         )
 
         result_data = """('Scrimshawed Whale Tooth', 'Deserted Docks', ('2', 'A'), 'Blue')\n\
@@ -142,3 +144,21 @@ class TisburyTreasureTest(unittest.TestCase):
 ('Silver Seahorse', 'Hidden Spring (Island of Mystery)', ('4', 'E'), 'Yellow')\n"""
 
         self.assertEqual(clean_up(input_data), result_data)
+
+    # @unittest.skip
+    @pytest.mark.task(taskno=6)
+    def test_clean_up_record(self):
+        input_data = ('Scrimshawed Whale Tooth', '2A', 'Deserted Docks', ('2', 'A'), 'Blue')
+
+        result_data = "('Scrimshawed Whale Tooth', 'Deserted Docks', ('2', 'A'), 'Blue')\n"
+
+        self.assertEqual(clean_up_record(input_data), result_data)
+
+    # @unittest.skip
+    @pytest.mark.task(taskno=7)
+    def test_remove_redundant_coordinate(self):
+        input_data = ('Scrimshawed Whale Tooth', '2A', 'Deserted Docks', ('2', 'A'), 'Blue')
+
+        result_data = ('Scrimshawed Whale Tooth', 'Deserted Docks', ('2', 'A'), 'Blue')
+
+        self.assertEqual(remove_redundant_coordinate(input_data), result_data)

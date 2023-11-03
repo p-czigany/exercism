@@ -1,4 +1,5 @@
 """Functions to help Azara and Rui locate pirate treasure."""
+__INDEX_OF_REDUNDANT_COORDINATE = 1
 
 
 def get_coordinate(record):
@@ -8,7 +9,7 @@ def get_coordinate(record):
     :return: str - the extracted map coordinate.
     """
 
-    pass
+    return record[1]
 
 
 def convert_coordinate(coordinate):
@@ -18,7 +19,7 @@ def convert_coordinate(coordinate):
     :return: tuple - the string coordinate split into its individual components.
     """
 
-    pass
+    return tuple(coordinate)
 
 
 def compare_records(azara_record, rui_record):
@@ -29,7 +30,7 @@ def compare_records(azara_record, rui_record):
     :return: bool - do the coordinates match?
     """
 
-    pass
+    return rui_record[1] == convert_coordinate(azara_record[1])
 
 
 def create_record(azara_record, rui_record):
@@ -40,7 +41,7 @@ def create_record(azara_record, rui_record):
     :return: tuple or str - the combined record (if compatible), or the string "not a match" (if incompatible).
     """
 
-    pass
+    return azara_record + rui_record if compare_records(azara_record, rui_record) else "not a match"
 
 
 def clean_up(combined_record_group):
@@ -54,4 +55,14 @@ def clean_up(combined_record_group):
     (see HINTS.md for an example).
     """
 
-    pass
+    return "".join(clean_up_record(line) for line in combined_record_group)
+
+
+def clean_up_record(combined_record):
+    return str(remove_redundant_coordinate(combined_record)) + "\n"
+
+
+def remove_redundant_coordinate(combined_record):
+    record_as_list = list(combined_record)
+    record_as_list.pop(__INDEX_OF_REDUNDANT_COORDINATE)
+    return tuple(record_as_list)
