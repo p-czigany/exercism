@@ -1,4 +1,8 @@
 """Functions for organizing and calculating student exam scores."""
+MAXIMUM_SCORE = 100
+FAILING_MAX_SCORE = 40
+PASSING_MIN_SCORE = FAILING_MAX_SCORE + 1
+NUMBER_OF_GRADES = 4
 
 
 def round_scores(student_scores):
@@ -8,7 +12,7 @@ def round_scores(student_scores):
     :return: list - student scores *rounded* to nearest integer value.
     """
 
-    pass
+    return list(map(lambda score: round(score), student_scores))
 
 
 def count_failed_students(student_scores):
@@ -18,7 +22,7 @@ def count_failed_students(student_scores):
     :return: int - count of student scores at or below 40.
     """
 
-    pass
+    return len(list(filter(lambda score: score <= FAILING_MAX_SCORE, student_scores)))
 
 
 def above_threshold(student_scores, threshold):
@@ -29,7 +33,7 @@ def above_threshold(student_scores, threshold):
     :return: list - of integer scores that are at or above the "best" threshold.
     """
 
-    pass
+    return list(filter(lambda score: score >= threshold, student_scores))
 
 
 def letter_grades(highest):
@@ -46,7 +50,17 @@ def letter_grades(highest):
             86 <= "A" <= 100
     """
 
-    pass
+    return list(map(lambda i: PASSING_MIN_SCORE + interval(highest) * i, range(NUMBER_OF_GRADES)))
+
+
+def interval(highest):
+    """Create the interval for grading.
+
+    :param highest: int - value of highest exam score.
+    :return: int - the size of the interval of a single grade
+    """
+
+    return round((highest - FAILING_MAX_SCORE) / NUMBER_OF_GRADES)
 
 
 def student_ranking(student_scores, student_names):
@@ -57,7 +71,7 @@ def student_ranking(student_scores, student_names):
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
 
-    pass
+    return list(map(lambda i: f"{i + 1}. {student_names[i]}: {student_scores[i]}", range(len(student_scores))))
 
 
 def perfect_score(student_info):
@@ -67,4 +81,4 @@ def perfect_score(student_info):
     :return: list - first `[<student name>, 100]` or `[]` if no student score of 100 is found.
     """
 
-    pass
+    return next(filter(lambda student_score: student_score[1] == MAXIMUM_SCORE, student_info), [])

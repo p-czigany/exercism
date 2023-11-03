@@ -29,7 +29,7 @@ class MakingTheGradeTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=student_scores, output=result):
                 self.assertEqual(sorted(round_scores(student_scores)), sorted(result), msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=2)
     def test_count_failed_students(self):
         data = [
@@ -41,7 +41,7 @@ class MakingTheGradeTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=student_scores, output=result):
                 self.assertEqual(count_failed_students(student_scores), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=3)
     def test_above_threshold(self):
         data = [
@@ -56,7 +56,7 @@ class MakingTheGradeTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertEqual(above_threshold(*params), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=4)
     def test_letter_grades(self):
         data = [
@@ -71,7 +71,7 @@ class MakingTheGradeTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=highest, output=result):
                 self.assertEqual(letter_grades(highest), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=5)
     def test_student_ranking(self):
         data = [
@@ -87,7 +87,7 @@ class MakingTheGradeTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertEqual(student_ranking(*params), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=6)
     def test_perfect_score(self):
         data = [
