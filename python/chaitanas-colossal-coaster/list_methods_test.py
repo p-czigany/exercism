@@ -25,7 +25,7 @@ class ListMethodsTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertListEqual(add_me_to_the_queue(*params), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=2)
     def test_find_my_friend(self):
         data = [
@@ -39,7 +39,7 @@ class ListMethodsTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertIs(find_my_friend(*params), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=3)
     def test_add_me_with_my_friends(self):
         data = [
@@ -62,7 +62,7 @@ class ListMethodsTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertListEqual(add_me_with_my_friends(*params), result, error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=4)
     def test_remove_the_mean_person(self):
         data = [
@@ -85,7 +85,7 @@ class ListMethodsTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertListEqual(remove_the_mean_person(*params), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=5)
     def test_how_many_namefellows(self):
         data = [
@@ -99,7 +99,7 @@ class ListMethodsTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertIs(how_many_namefellows(*params), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=6)
     def test_remove_the_last_person(self):
         data = [
@@ -111,7 +111,7 @@ class ListMethodsTest(unittest.TestCase):
             with self.subTest(f'variation #{variant}', input=params, output=result):
                 self.assertIs(remove_the_last_person(params), result, msg=error_message)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=7)
     def test_sorted_names(self):
         data = [
