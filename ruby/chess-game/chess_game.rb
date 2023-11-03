@@ -13,6 +13,10 @@ module Chess
   end
 
   def self.move_message(first_name, last_name, square)
-    format(valid_square?(square[1].to_i, square[0]) ? SUCCESSFUL_MOVE_MESSAGE : UNSUCCESSFUL_MOVE_MESSAGE, nick_name(first_name, last_name), square)
+    format(message_template(square), nick_name(first_name, last_name), square)
+  end
+
+  def self.message_template(square)
+    valid_square?(square[1].to_i, square[0]) ? SUCCESSFUL_MOVE_MESSAGE : UNSUCCESSFUL_MOVE_MESSAGE
   end
 end
