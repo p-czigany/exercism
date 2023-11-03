@@ -3,6 +3,7 @@ MAXIMUM_SCORE = 100
 FAILING_MAX_SCORE = 40
 PASSING_MIN_SCORE = FAILING_MAX_SCORE + 1
 NUMBER_OF_GRADES = 4
+STUDENT_SCORE_FORMAT = "{}. {}: {}"
 
 
 def round_scores(student_scores):
@@ -71,7 +72,8 @@ def student_ranking(student_scores, student_names):
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
 
-    return list(map(lambda i: f"{i + 1}. {student_names[i]}: {student_scores[i]}", range(len(student_scores))))
+    return list(STUDENT_SCORE_FORMAT.format(i + 1, name, score) for i, (name, score) in
+                enumerate(zip(student_names, student_scores)))
 
 
 def perfect_score(student_info):
