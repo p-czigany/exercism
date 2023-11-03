@@ -57,8 +57,4 @@ class ChessTest < Minitest::Test
   def test_incorrect_message_when_being_on_rank_0
     assert_equal "TOON attempted to move to A0, but that is not a valid square", Chess.move_message("Tore", "Anderson", "A0")
   end
-
-  # def test_validator
-  #   assert Chess.validator("A2")
-  # end
 end

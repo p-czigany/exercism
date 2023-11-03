@@ -1,6 +1,6 @@
 module Chess
-  Chess::RANKS = 1..8
-  Chess::FILES = 'A'..'H'
+  RANKS = 1..8
+  FILES = 'A'..'H'
 
   def self.valid_square?(rank, file)
     RANKS.include? rank and FILES.include? file
