@@ -50,7 +50,7 @@ def remove_the_mean_person(queue, person_name):
     :return: list - queue update with the mean persons name removed.
     """
 
-    return [name for name in queue if name != person_name]
+    return list(filter(lambda name: name != person_name, queue))
 
 
 def how_many_namefellows(queue, person_name):
