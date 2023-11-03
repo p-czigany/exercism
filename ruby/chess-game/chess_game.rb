@@ -1,6 +1,8 @@
 module Chess
   RANKS = 1..8
   FILES = 'A'..'H'
+  SUCCESSFUL_MOVE_MESSAGE = '%s moved to %s'
+  UNSUCCESSFUL_MOVE_MESSAGE = '%s attempted to move to %s, but that is not a valid square'
 
   def self.valid_square?(rank, file)
     RANKS.include? rank and FILES.include? file
@@ -11,6 +13,6 @@ module Chess
   end
 
   def self.move_message(first_name, last_name, square)
-    valid_square?(square[1].to_i, square[0]) ? "#{nick_name(first_name, last_name)} moved to #{square}" : "#{nick_name(first_name, last_name)} attempted to move to #{square}, but that is not a valid square"
+    format(valid_square?(square[1].to_i, square[0]) ? SUCCESSFUL_MOVE_MESSAGE : UNSUCCESSFUL_MOVE_MESSAGE, nick_name(first_name, last_name), square)
   end
 end
