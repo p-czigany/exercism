@@ -44,14 +44,10 @@ end
 class BackstagePass < ItemForSale
   def update
     case @sell_in
-    when -Float::INFINITY..0
-      @quality = 0
-    when 0..5
-      change_quality(3)
-    when 6..10
-      change_quality(2)
-    else
-      change_quality(1)
+    when -Float::INFINITY..0 then @quality = 0
+    when 0..5 then change_quality 3
+    when 6..10 then change_quality 2
+    else change_quality 1
     end
     @sell_in -= 1
   end
@@ -61,11 +57,11 @@ end
 class Item
   def self.new(name:, sell_in:, quality:)
     case name
-    when 'Sulfuras, Hand of Ragnaros'
+    when /^Sulfuras/
       Sulfuras.new(name, sell_in, quality)
-    when 'Aged Brie'
+    when /^Aged Brie/
       AgedBrie.new(name, sell_in, quality)
-    when 'Backstage passes to a TAFKAL80ETC concert'
+    when /^Backstage passes/
       BackstagePass.new(name, sell_in, quality)
     else
       RegularItem.new(name, sell_in, quality)
