@@ -16,118 +16,118 @@ class GildedRoseTest < Minitest::Test
   end
 
   def test_normal_item_on_sell_date
-    skip
+    # skip
     update_with sell_in: 0, quality: 10, name: "some item", quality_change: -2
   end
 
   def test_normal_item_after_sell_date
-    skip
+    # skip
     update_with sell_in: -1, quality: 10, name: "some item", quality_change: -2
   end
 
   def test_normal_item_of_zero_quality
-    skip
+    # skip
     update_with sell_in: 1, quality: 0, name: "some item", quality_change: 0
   end
 
   def test_normal_item_near_zero_quality
-    skip
+    # skip
     update_with sell_in: 0, quality: 1, name: "some item", quality_change: -1
   end
 
   def test_brie_before_sell_date
-    skip
+    # skip
     update_with sell_in: 1, quality: 0, name: "Aged Brie", quality_change: 1
   end
 
   def test_brie_on_sell_date
-    skip
+    # skip
     update_with sell_in: 0, quality: 0, name: "Aged Brie", quality_change: 2
   end
 
   def test_brie_after_sell_date
-    skip
+    # skip
     update_with sell_in: -1, quality: 0, name: "Aged Brie", quality_change: 2
   end
 
   def test_brie_of_max_quality
-    skip
+    # skip
     update_with sell_in: 1, quality: 50, name: "Aged Brie", quality_change: 0
   end
 
   def test_brie_near_max_quality
-    skip
+    # skip
     update_with sell_in: 0, quality: 49, name: "Aged Brie", quality_change: 1
   end
 
   def test_sulfuras_before_sell_date
-    skip
+    # skip
     update_with sell_in: 1, quality: 80, name: "Sulfuras, Hand of Ragnaros",
       sell_in_change: 0, quality_change: 0
   end
 
   def test_sulfuras_on_sell_date
-    skip
+    # skip
     update_with sell_in: 0, quality: 80, name: "Sulfuras, Hand of Ragnaros",
       sell_in_change: 0, quality_change: 0
   end
 
   def test_sulfuras_after_sell_date
-    skip
+    # skip
     update_with sell_in: -1, quality: 80, name: "Sulfuras, Hand of Ragnaros",
       sell_in_change: 0, quality_change: 0
   end
 
   def test_backstage_pass_far_from_sell_date
-    skip
+    # skip
     update_with sell_in: 11, quality: 10, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: 1
   end
 
   def test_backstage_pass_medium_from_sell_date_upper_bound
-    skip
+    # skip
     update_with sell_in: 10, quality: 0, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: 2
   end
 
   def test_backstage_pass_medium_from_sell_date_lower_bound
-    skip
+    # skip
     update_with sell_in: 6, quality: 0, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: 2
   end
 
   def test_backstage_pass_close_to_sell_date_upper_bound
-    skip
+    # skip
     update_with sell_in: 5, quality: 0, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: 3
   end
 
   def test_backstage_pass_close_to_sell_date_lower_bound
-    skip
+    # skip
     update_with sell_in: 1, quality: 0, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: 3
   end
 
   def test_backstage_pass_on_sell_date
-    skip
+    # skip
     update_with sell_in: 0, quality: 10, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: -10
   end
 
   def test_backstage_pass_after_sell_date
-    skip
+    # skip
     update_with sell_in: -1, quality: 10, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: -10
   end
 
   def test_backstage_pass_of_max_quality
-    skip
+    # skip
     update_with sell_in: 11, quality: 50, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: 0
   end
 
   def test_backstage_pass_near_max_quality
-    skip
+    # skip
     update_with sell_in: 1, quality: 49, name: "Backstage passes to a TAFKAL80ETC concert",
       quality_change: 1
   end
@@ -283,7 +283,7 @@ class GildedRoseTest < Minitest::Test
   end
 
   def test_multiple_items
-    skip
+    # skip
     normal_item = Item.new(name: "some item", sell_in: 1, quality: 10)
     aged_brie = Item.new(name: "Aged Brie", sell_in: -1, quality: 10)
 
