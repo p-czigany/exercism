@@ -283,7 +283,7 @@ class GildedRoseTest < Minitest::Test
   end
 
   def test_multiple_items
-    # skip
+    skip
     normal_item = Item.new(name: "some item", sell_in: 1, quality: 10)
     aged_brie = Item.new(name: "Aged Brie", sell_in: -1, quality: 10)
 
