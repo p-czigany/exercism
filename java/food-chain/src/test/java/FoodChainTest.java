@@ -64,7 +64,7 @@ public class FoodChainTest {
 
 
     @Test
-    @Ignore("Remove to run test.")
+//    @Ignore("Remove to run test.")
     public void dog() {
         int verse = 5;
         String expected = "I know an old lady who swallowed a dog.\n" +
@@ -80,7 +80,7 @@ public class FoodChainTest {
     }
 
     @Test
-    @Ignore("Remove to run test.")
+//    @Ignore("Remove to run test.")
     public void goat() {
         int verse = 6;
         String expected = "I know an old lady who swallowed a goat.\n" +
@@ -97,7 +97,7 @@ public class FoodChainTest {
     }
 
     @Test
-    @Ignore("Remove to run test.")
+//    @Ignore("Remove to run test.")
     public void cow() {
         int verse = 7;
         String expected = "I know an old lady who swallowed a cow.\n" +
@@ -115,7 +115,7 @@ public class FoodChainTest {
     }
 
     @Test
-    @Ignore("Remove to run test.")
+//    @Ignore("Remove to run test.")
     public void horse() {
         int verse = 8;
         String expected = "I know an old lady who swallowed a horse.\n" +
@@ -126,7 +126,7 @@ public class FoodChainTest {
 
 
     @Test
-    @Ignore("Remove to run test.")
+//    @Ignore("Remove to run test.")
     public void multipleVerses() {
         int startVerse = 1;
         int endVerse = 3;
@@ -150,7 +150,7 @@ public class FoodChainTest {
 
 
     @Test
-    @Ignore("Remove to run test.")
+//    @Ignore("Remove to run test.")
     public void wholeSong() {
         int startVerse = 1;
         int endVerse = 8;
