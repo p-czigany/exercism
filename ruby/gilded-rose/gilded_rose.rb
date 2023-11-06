@@ -57,8 +57,8 @@ class BackstagePass < ItemForSale
 
   def update_quality
     case @sell_in
-    when -Float::INFINITY..0 then @quality = 0
-    when 0..5 then change_quality self.class::STABILITY + 2
+    when ..0 then @quality = 0
+    when 1..5 then change_quality self.class::STABILITY + 2
     when 6..10 then change_quality self.class::STABILITY + 1
     else change_quality self.class::STABILITY
     end
