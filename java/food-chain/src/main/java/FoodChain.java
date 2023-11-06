@@ -3,9 +3,9 @@ import java.util.List;
 
 class FoodChain {
 
-  private static final List<List<String>> POSSIBLE_LINES =
+  private static final List<List<String>> ANIMALS_AND_OUTCRIES =
       List.of(
-          List.of("fly", "I don't know why she swallowed the fly. Perhaps she'll die."),
+          List.of("fly"),
           List.of(
               "spider that wriggled and jiggled and tickled inside her",
               "It wriggled and jiggled and tickled inside her."),
@@ -14,45 +14,55 @@ class FoodChain {
           List.of("dog", "What a hog, to swallow a dog!"),
           List.of("goat", "Just opened her throat and swallowed a goat!"),
           List.of("cow", "I don't know how she swallowed a cow!"),
-          List.of("horse", "She's dead, of course!"));
+          List.of("horse"));
 
-  private static final String FIRST_LINE_OF_VERSE = "I know an old lady who swallowed a %s.";
-  private static final String CAUSE = "She swallowed the %s to catch the %s.";
+  private static final List<Integer> SHORT_VERSES = List.of(1, 8);
 
   String verse(int verse) {
     List<String> lines = new ArrayList<>();
     addFirstLineOfVerse(lines, verse);
-    addSecondLineOfVerse(lines, verse);
-    if (verse != 8) {
+    if (!SHORT_VERSES.contains(verse)) {
+      addOutcryLineOfVerse(lines, verse);
       addCauseLinesOfVerse(lines, verse);
-      addLastCauseLineOfVerse(lines);
     }
+    addLastLineOfVerse(lines, verse);
     return String.join("\n", lines);
   }
 
   private void addFirstLineOfVerse(List<String> verseLines, int verse) {
-    verseLines.add(
-        String.format(FIRST_LINE_OF_VERSE, POSSIBLE_LINES.get(verse - 1).get(0).split(" ", 2)[0]));
+    verseLines.add(String.format("I know an old lady who swallowed a %s.", currentAnimal(verse)));
   }
 
-  private void addSecondLineOfVerse(List<String> verseLines, int verse) {
-    if (verse > 1) {
-      verseLines.add(POSSIBLE_LINES.get(verse - 1).get(1));
-    }
+  private void addOutcryLineOfVerse(List<String> verseLines, int verse) {
+    verseLines.add(outcry(verse));
+  }
+
+  private String outcry(int index) {
+    return ANIMALS_AND_OUTCRIES.get(index - 1).get(1);
   }
 
   private void addCauseLinesOfVerse(List<String> verseLines, int verse) {
     for (int i = verse; i > 1; i--) {
       verseLines.add(
           String.format(
-              CAUSE,
-              POSSIBLE_LINES.get(i - 1).get(0).split(" ", 2)[0],
-              POSSIBLE_LINES.get(i - 2).get(0)));
+              "She swallowed the %s to catch the %s.", currentAnimal(i), previousAnimal(i)));
     }
   }
 
-  private void addLastCauseLineOfVerse(List<String> verseLines) {
-    verseLines.add(POSSIBLE_LINES.get(0).get(1));
+  private void addLastLineOfVerse(List<String> verseLines, int verse) {
+    if (verse == 8) {
+      verseLines.add("She's dead, of course!");
+    } else {
+      verseLines.add("I don't know why she swallowed the fly. Perhaps she'll die.");
+    }
+  }
+
+  private String currentAnimal(int index) {
+    return ANIMALS_AND_OUTCRIES.get(index - 1).get(0).split(" ", 2)[0];
+  }
+
+  private String previousAnimal(int index) {
+    return ANIMALS_AND_OUTCRIES.get(index - 2).get(0);
   }
 
   String verses(int startVerse, int endVerse) {
