@@ -39,7 +39,9 @@ end
 
 # Legendary item - timeless.
 class Sulfuras < ItemForSale
-  def update; end
+  def update
+    update_quality
+  end
 end
 
 # Cheese - tastier with age.
@@ -51,59 +53,62 @@ end
 
 # Backstage passes to a concert.
 class BackstagePass < ItemForSale
+  STABILITY = 1
+
   def update_quality
     case @sell_in
     when -Float::INFINITY..0 then @quality = 0
-    when 0..5 then change_quality 3
-    when 6..10 then change_quality 2
-    else change_quality 1
+    when 0..5 then change_quality self.class::STABILITY + 2
+    when 6..10 then change_quality self.class::STABILITY + 1
+    else change_quality self.class::STABILITY
     end
   end
 end
 
-# Conjured fine good, for sale in the famed Gilded Rose inn.
-class ConjuredItemForSale < ItemForSale
+# Conjured property of any fine good (ItemForSale).
+module Conjured
   def update
-    update_quality
+    super
     disappear
-    update_time
   end
 
   def disappear
-    return unless @sell_in < 1
+    return unless @sell_in.negative?
 
     @quality = 0
   end
 end
 
 # Conjured fine good item - tends to vanish.
-class ConjuredRegularItem < ConjuredItemForSale
+class ConjuredRegularItem < RegularItem
+  include Conjured
+
   def update_quality
-    change_quality(-2)
+    super
+    change_quality(-1)
   end
 end
 
 # Conjured cheese - gets better until it vanishes.
-class ConjuredAgedBrie < ConjuredItemForSale
-  def update_quality
-    change_quality @sell_in.positive? ? 1 : 2
-  end
+class ConjuredAgedBrie < AgedBrie
+  include Conjured
 end
 
 # Conjured Sulfuras - timeless until it isn't there.
-class ConjuredSulfuras < ConjuredItemForSale
+class ConjuredSulfuras < Sulfuras
+  include Conjured
+
+  def update
+    update_time
+    super
+  end
 end
 
 # Conjured backstage passes to a concert
-class ConjuredBackstagePass < ConjuredItemForSale
-  def update_quality
-    case @sell_in
-    when -Float::INFINITY..0 then @quality = 0
-    when 0..5 then change_quality 2
-    when 6..10 then change_quality 1
-    else change_quality 0
-    end
-  end
+class ConjuredBackstagePass < BackstagePass
+  include Conjured
+
+  STABILITY = 0
 end
 
 # Factory class for the different item types.
