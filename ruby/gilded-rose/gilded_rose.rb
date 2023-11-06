@@ -53,15 +53,17 @@ end
 
 # Backstage passes to a concert.
 class BackstagePass < ItemForSale
-  STABILITY = 1
-
   def update_quality
     case @sell_in
+    when 11.. then change_quality self.class.stability
+    when 6..10 then change_quality self.class.stability + 1
+    when 1..5 then change_quality self.class.stability + 2
     when ..0 then @quality = 0
-    when 1..5 then change_quality self.class::STABILITY + 2
-    when 6..10 then change_quality self.class::STABILITY + 1
-    else change_quality self.class::STABILITY
     end
+  end
+
+  def self.stability
+    1
   end
 end
 
@@ -108,7 +110,9 @@ end
 class ConjuredBackstagePass < BackstagePass
   include Conjured
 
-  STABILITY = 0
+  def self.stability
+    super - 1
+  end
 end
 
 # Factory class for the different item types.
