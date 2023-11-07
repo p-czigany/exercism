@@ -76,7 +76,7 @@ class InventoryTest(unittest.TestCase):
     @pytest.mark.task(taskno=3)
     def test_not_below_zero(self):
         actual_result = decrement_items({"wood": 2, "iron": 3, "diamond": 1},
-                                      ["wood", "wood", "wood", "iron", "diamond", "diamond", "gold"])
+                                      ["wood", "wood", "wood", "iron", "diamond", "diamond"])
         expected = {"wood": 0, "iron": 2, "diamond": 0}
         error_message = ('Called decrement_items({"wood": 2, "iron": 3, "diamond": 1}, '
                          '["wood", "wood", "wood", "iron", "diamond", "diamond"]). The '

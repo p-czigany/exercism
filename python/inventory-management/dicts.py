@@ -1,4 +1,5 @@
 """Functions to keep track and alter inventory."""
+from collections import Counter
 
 
 def create_inventory(items):
@@ -8,7 +9,7 @@ def create_inventory(items):
     :return: dict - the inventory dictionary.
     """
 
-    return {item_type: items.count(item_type) for item_type in set(items)}
+    return Counter(items)
 
 
 def add_items(inventory, items):
@@ -19,8 +20,12 @@ def add_items(inventory, items):
     :return: dict - the inventory updated with the new items.
     """
 
-    return {item_type: inventory.get(item_type, 0) + items.count(item_type) for item_type in
-            set(list(inventory.keys()) + items)}
+    inventory = Counter(inventory)
+
+    inventory.update(items)
+
+    # return Counter(inventory) + Counter(items)
+    return inventory
 
 
 def decrement_items(inventory, items):
@@ -31,24 +36,10 @@ def decrement_items(inventory, items):
     :return: dict - updated inventory with items decremented.
     """
 
-    for item in items:
-        decrement_inventory_item(inventory, item)
+    inventory = Counter(inventory)
+    inventory.subtract(Counter(items))
 
-    return inventory
-
-
-def decrement_inventory_item(inventory, item):
-    """Decrement a single item in inventory by one if possible
-
-        :param inventory: dict - inventory dictionary.
-        :param item: string - item to decrement from the inventory.
-        :return: dict - updated inventory with item decremented.
-        """
-
-    if item in inventory:
-        inventory[item] = max(inventory.get(item, 0) - 1, 0)
-
-    return inventory
+    return {item: max(quantity, 0) for item, quantity in inventory.items()}
 
 
 def remove_item(inventory, item):
@@ -59,8 +50,8 @@ def remove_item(inventory, item):
     :return: dict - updated inventory with item removed. Current inventory if item does not match.
     """
 
-    if item in inventory:
-        inventory.pop(item)
+    inventory = Counter(inventory)
+    del inventory[item]
 
     return inventory
 
