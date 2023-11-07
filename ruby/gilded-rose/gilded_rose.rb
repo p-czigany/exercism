@@ -62,9 +62,7 @@ class BackstagePass < ItemForSale
     end
   end
 
-  def self.stability
-    1
-  end
+  def self.stability = 1
 end
 
 # Conjured property of any fine good (ItemForSale).
@@ -110,9 +108,7 @@ end
 class ConjuredBackstagePass < BackstagePass
   include Conjured
 
-  def self.stability
-    super - 1
-  end
+  def self.stability = super - 1
 end
 
 # Factory class for the different item types.
