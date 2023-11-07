@@ -8,13 +8,7 @@ def create_inventory(items):
     :return: dict - the inventory dictionary.
     """
 
-    item_types = set(items)
-    inventory = dict()
-
-    for item_type in item_types:
-        inventory.update({item_type: items.count(item_type)})
-
-    return inventory
+    return {item_type: items.count(item_type) for item_type in set(items)}
 
 
 def add_items(inventory, items):
