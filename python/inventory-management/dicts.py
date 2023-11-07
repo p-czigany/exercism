@@ -19,10 +19,8 @@ def add_items(inventory, items):
     :return: dict - the inventory updated with the new items.
     """
 
-    for item in items:
-        inventory.update({item: inventory.get(item, 0) + 1})
-
-    return inventory
+    return {item_type: inventory.get(item_type, 0) + items.count(item_type) for item_type in
+            set(list(inventory.keys()) + items)}
 
 
 def decrement_items(inventory, items):
