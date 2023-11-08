@@ -1,3 +1,5 @@
+import org.assertj.core.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,7 @@ public class CalculatorConundrumTest {
         assertThat(new CalculatorConundrum().calculate(22, 25, "+")).isEqualTo("22 + 25 = 47");
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("The calculate method returns the correct result when adding large operands")
@@ -20,6 +23,7 @@ public class CalculatorConundrumTest {
         assertThat(new CalculatorConundrum().calculate(378_961, 399_635, "+")).isEqualTo("378961 + 399635 = 778596");
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("The calculate method returns the correct result when multiplying small operands")
@@ -27,6 +31,7 @@ public class CalculatorConundrumTest {
         assertThat(new CalculatorConundrum().calculate(3, 21, "*")).isEqualTo("3 * 21 = 63");
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("The calculate method returns the correct result when multiplying large operands")
@@ -34,6 +39,7 @@ public class CalculatorConundrumTest {
         assertThat(new CalculatorConundrum().calculate(72_441, 2_048, "*")).isEqualTo("72441 * 2048 = 148359168");
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("The calculate method returns the correct result when dividing small operands")
@@ -41,6 +47,7 @@ public class CalculatorConundrumTest {
         assertThat(new CalculatorConundrum().calculate(72, 9, "/")).isEqualTo("72 / 9 = 8");
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("The calculate method returns the correct result when dividing large operands")
@@ -48,6 +55,7 @@ public class CalculatorConundrumTest {
         assertThat(new CalculatorConundrum().calculate(1_338_800, 83_675, "/")).isEqualTo("1338800 / 83675 = 16");
     }
 
+//    @Disabled
     @Test
     @Tag("task:2")
     @DisplayName("The calculate method throws IllegalOperationException when passing invalid operation")
@@ -59,6 +67,7 @@ public class CalculatorConundrumTest {
                 .withMessage(expectedMessage);
     }
 
+//    @Disabled
     @Test
     @Tag("task:2")
     @DisplayName("The calculate method throws IllegalArgumentException when passing null operation")
@@ -68,6 +77,7 @@ public class CalculatorConundrumTest {
                 .withMessage("Operation cannot be null");
     }
 
+//    @Disabled
     @Test
     @Tag("task:2")
     @DisplayName("The calculate method throws IllegalArgumentException when passing empty operation")
@@ -77,6 +87,7 @@ public class CalculatorConundrumTest {
                 .withMessage("Operation cannot be empty");
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("The calculate method throws IllegalOperationException when dividing by zero")
