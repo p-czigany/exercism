@@ -48,7 +48,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=3)
     def test_add_missing_stops(self): 
         input_data = (({'from': 'Berlin', 'to': 'Hamburg'}, {'stop_1': 'Lepzig', 'stop_2': 'Hannover', 'stop_3': 'Frankfurt'}), 
