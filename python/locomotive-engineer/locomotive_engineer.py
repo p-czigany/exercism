@@ -24,7 +24,7 @@ def add_missing_stops(route, **stops):
     """Add missing stops to route dict.
 
     :param route: dict - the dict of routing information.
-    :param stops:  arbitrary number of stops.
+    :param stops: dict - arbitrary number of stops.
     :return: dict - updated route dictionary.
     """
     return {**route, **{'stops': list(stops.values())}}
