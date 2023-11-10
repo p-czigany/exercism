@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-
+##
+# This class represents a locomotive engineer with a wide range of skills.
 class LocomotiveEngineer
   def self.generate_list_of_wagons(*wagon_ids)
     wagon_ids
