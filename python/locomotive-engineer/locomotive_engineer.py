@@ -27,8 +27,7 @@ def add_missing_stops(route, **stops):
     :param stops:  arbitrary number of stops.
     :return: dict - updated route dictionary.
     """
-    route.update({'stops': list(stops.values())})
-    return route
+    return {**route, **{'stops': list(stops.values())}}
 
 
 def extend_route_information(route, more_route_information):
@@ -38,8 +37,7 @@ def extend_route_information(route, more_route_information):
     :param more_route_information: dict -  extra route information.
     :return: dict - extended route information.
     """
-    route.update(more_route_information)
-    return route
+    return {**route, **more_route_information}
 
 
 def fix_wagon_depot(wagons_rows):
