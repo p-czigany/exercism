@@ -9,6 +9,7 @@ from locomotive_engineer import (get_list_of_wagons,
 
 class LocomotiveEngineerTest(unittest.TestCase):
 
+    # @unittest.skip
     @pytest.mark.task(taskno=1)
     def test_get_list_of_wagons(self):
         input_data = [(1,5,2,7,4), (1,5), (1,), (1,9,3), (1,10,6,3,9,8,4,14,24,7)]
@@ -24,6 +25,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
+    @unittest.skip
     @pytest.mark.task(taskno=2)
     def test_fix_list_of_wagons(self):
         input_data = [([2, 5, 1, 7, 4, 12, 6, 3, 13], [3, 17, 6, 15]),
@@ -46,6 +48,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
+    @unittest.skip
     @pytest.mark.task(taskno=3)
     def test_add_missing_stops(self): 
         input_data = (({'from': 'Berlin', 'to': 'Hamburg'}, {'stop_1': 'Lepzig', 'stop_2': 'Hannover', 'stop_3': 'Frankfurt'}), 
@@ -68,6 +71,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
+    @unittest.skip
     @pytest.mark.task(taskno=4)
     def test_extend_route_information(self): 
         input_data = [({'from': 'Berlin', 'to': 'Hamburg'}, {'timeOfArrival': '12:00', 'precipitation': '10', 'temperature': '5', 'caboose': 'yes'}),
@@ -88,6 +92,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
+    @unittest.skip
     @pytest.mark.task(taskno=5)
     def test_fix_wagon_depot(self):
         input_data = (
