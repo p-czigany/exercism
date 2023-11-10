@@ -71,7 +71,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=4)
     def test_extend_route_information(self): 
         input_data = [({'from': 'Berlin', 'to': 'Hamburg'}, {'timeOfArrival': '12:00', 'precipitation': '10', 'temperature': '5', 'caboose': 'yes'}),

@@ -38,7 +38,8 @@ def extend_route_information(route, more_route_information):
     :param more_route_information: dict -  extra route information.
     :return: dict - extended route information.
     """
-    pass
+    route.update(more_route_information)
+    return route
 
 
 def fix_wagon_depot(wagons_rows):
