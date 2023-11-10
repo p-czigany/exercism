@@ -25,7 +25,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=2)
     def test_fix_list_of_wagons(self):
         input_data = [([2, 5, 1, 7, 4, 12, 6, 3, 13], [3, 17, 6, 15]),
