@@ -17,7 +17,8 @@ def fix_list_of_wagons(each_wagons_id, missing_wagons):
     :param missing_wagons: list - the list of missing wagons.
     :return: list - list of wagons.
     """
-    return [each_wagons_id[2], *missing_wagons, *each_wagons_id[3:], *each_wagons_id[:2]]
+    first, second, engine, *remainder = each_wagons_id
+    return [engine, *missing_wagons, *remainder, first, second]
 
 
 def add_missing_stops(route, **stops):
