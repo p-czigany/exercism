@@ -92,7 +92,7 @@ class LocomotiveEngineerTest(unittest.TestCase):
 
                 self.assertEqual(actual_result, expected, msg=error_msg)
 
-    @unittest.skip
+    # @unittest.skip
     @pytest.mark.task(taskno=5)
     def test_fix_wagon_depot(self):
         input_data = (
