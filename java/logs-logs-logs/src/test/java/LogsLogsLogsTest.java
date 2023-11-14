@@ -1,8 +1,9 @@
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class LogsLogsLogsTest {
     @Test
@@ -13,6 +14,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("TRACE"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("Parsing log level DBG")
@@ -21,6 +23,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("DEBUG"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("Parsing log level INF")
@@ -29,6 +32,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("INFO"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("Parsing log level WRN")
@@ -37,6 +41,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("WARNING"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("Parsing log level ERR")
@@ -45,6 +50,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("ERROR"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:1")
     @DisplayName("Parsing log level FTL")
@@ -53,6 +59,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("FATAL"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:2")
     @DisplayName("Parsing unknown log level XYZ")
@@ -61,6 +68,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("UNKNOWN"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:2")
     @DisplayName("Parsing unknown log level ABC")
@@ -69,6 +77,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getLogLevel()).isEqualTo(LogLevel.valueOf("UNKNOWN"));
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("Get short log output for log level UNKNOWN")
@@ -77,6 +86,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getOutputForShortLog()).isEqualTo("0:We're no strangers to love");
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("Get short log output for log level TRACE")
@@ -85,6 +95,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getOutputForShortLog()).isEqualTo("1:You know the rules and so do I");
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("Get short log output for log level DEBUG")
@@ -93,6 +104,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getOutputForShortLog()).isEqualTo("2:A full commitment's what I'm thinking of");
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("Get short log output for log level INFO")
@@ -101,6 +113,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getOutputForShortLog()).isEqualTo("4:You wouldn't get this from any other guy");
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("Get short log output for log level WARNING")
@@ -109,6 +122,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getOutputForShortLog()).isEqualTo("5:I just wanna tell you how I'm feeling");
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("Get short log output for log level ERROR")
@@ -117,6 +131,7 @@ public class LogsLogsLogsTest {
         assertThat(logLine.getOutputForShortLog()).isEqualTo("6:Gotta make you understand");
     }
 
+//    @Disabled
     @Test
     @Tag("task:3")
     @DisplayName("Get short log output for log level FATAL")

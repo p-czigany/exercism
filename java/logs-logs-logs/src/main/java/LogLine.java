@@ -1,13 +1,30 @@
 public class LogLine {
 
-    public LogLine(String logLine) {
-    }
+  private final String message;
+  private final LogLevel logLevel;
 
-    public LogLevel getLogLevel() {
-        throw new UnsupportedOperationException("Please implement the getLogLevel() method");
-    }
+  public LogLine(String logLine) {
+    this.message = message(logLine);
+    this.logLevel = LogLevel.findByKey(logLevel(logLine));
+  }
 
-    public String getOutputForShortLog() {
-        throw new UnsupportedOperationException("Please implement the getOutputForShortLog() method");
-    }
+  private static String logLevel(String logLine) {
+    String[] logParts = logLine.split("]: ");
+    String levelPart = logParts[0];
+    return levelPart.substring(1);
+  }
+
+  private static String message(String logLine) {
+    String[] logParts = logLine.split("]: ");
+    logParts[0] = "";
+    return String.join("", logParts).trim();
+  }
+
+  public LogLevel getLogLevel() {
+    return this.logLevel;
+  }
+
+  public String getOutputForShortLog() {
+    return String.format("%d:%s", this.logLevel.getNum(), this.message);
+  }
 }
