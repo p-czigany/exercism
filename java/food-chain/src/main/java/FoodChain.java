@@ -16,17 +16,19 @@ class FoodChain {
           List.of("cow", "I don't know how she swallowed a cow!"),
           List.of("horse"));
 
-  private static final List<Integer> SHORT_VERSES = List.of(1, 8);
-
   String verse(int verse) {
     List<String> lines = new ArrayList<>();
     addFirstLineOfVerse(lines, verse);
-    if (!SHORT_VERSES.contains(verse)) {
+    if (isLongVerse(verse)) {
       addOutcryLineOfVerse(lines, verse);
       addCauseLinesOfVerse(lines, verse);
     }
     addLastLineOfVerse(lines, verse);
     return String.join("\n", lines);
+  }
+
+  private boolean isLongVerse(int verse) {
+    return ANIMALS_AND_OUTCRIES.get(verse - 1).size() == 2;
   }
 
   private void addFirstLineOfVerse(List<String> verseLines, int verse) {
