@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public enum LogLevel {
   TRACE(1, "TRC"),
@@ -17,13 +18,10 @@ public enum LogLevel {
   }
 
   public static LogLevel findByKey(String key) {
-    LogLevel[] logLevels = LogLevel.values();
-    for (LogLevel logLevel : logLevels) {
-      if (key.equals(logLevel.key)) {
-        return logLevel;
-      }
-    }
-    return LogLevel.UNKNOWN;
+    return Arrays.stream(LogLevel.values())
+        .filter(logLevel -> key.equals(logLevel.key))
+        .findFirst()
+        .orElse(LogLevel.UNKNOWN);
   }
 
   public int getNum() {
