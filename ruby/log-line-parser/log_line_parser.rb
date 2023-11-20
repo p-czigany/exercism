@@ -4,7 +4,7 @@ class LogLineParser
   end
 
   def message
-    @line[part_before_message.length..-1].strip
+    @line[part_before_message.length..].strip
   end
 
   def log_level
