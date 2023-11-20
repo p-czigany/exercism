@@ -35,10 +35,19 @@ module Blackjack
   end
 
   def self.card_range(card1, card2)
-    raise "Please implement the Blackjack.card_range method"
+    case (parse_card card1) + (parse_card card2)
+    when ..11
+      'low'
+    when ..16
+      'mid'
+    when ..20
+      'high'
+    else
+      'blackjack'
+    end
   end
 
-  def self.first_turn(card1, card2, dealer_card)
-    raise "Please implement the Blackjack.first_turn method"
+  def self.first_turn(_card1, _card2, _dealer_card)
+    raise 'Please implement the Blackjack.first_turn method'
   end
 end
