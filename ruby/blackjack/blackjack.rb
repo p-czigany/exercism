@@ -29,7 +29,18 @@ module Blackjack
     end
   end
 
-  def self.first_turn(_card1, _card2, _dealer_card)
-    raise 'Please implement the Blackjack.first_turn method'
+  def self.first_turn(card1, card2, dealer_card)
+    return 'P' if card1 == 'ace' && card2 == 'ace'
+
+    if card_range(card1, card2) == 'blackjack'
+      return 'W' if parse_card(dealer_card) < 10
+
+      return 'S'
+    end
+    return 'S' if card_range(card1, card2) == 'high'
+
+    return 'S' if card_range(card1, card2) == 'mid' && parse_card(dealer_card) < 7
+
+    'H'
   end
 end
