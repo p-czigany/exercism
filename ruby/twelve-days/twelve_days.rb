@@ -25,15 +25,7 @@ class TwelveDays
   end
 
   def self.verse(verse_number)
-    if verse_number == 1
-      return "On the #{ORDINALS[verse_number - 1]} day of Christmas my true love gave to me: #{GIFTS[verse_number - 1]}."
-    end
-    if verse_number == 2
-      return "On the #{ORDINALS[verse_number - 1]} day of Christmas my true love gave to me: #{GIFTS[verse_number - 1]}, and #{GIFTS[verse_number - 2]}."
-    end
-    return unless verse_number == 3
-
-    "On the #{ORDINALS[verse_number - 1]} day of Christmas my true love gave to me: #{GIFTS[verse_number - 1]}, #{GIFTS[verse_number - 2]}, and #{GIFTS[0]}."
+    "On the #{ORDINALS[verse_number - 1]} day of Christmas my true love gave to me: #{enumerate_gifts verse_number}."
   end
 
   def self.enumerate_gifts(verse_number)
