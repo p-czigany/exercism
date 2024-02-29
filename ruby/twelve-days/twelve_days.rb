@@ -37,9 +37,12 @@ class TwelveDays
   end
 
   def self.enumerate_gifts(verse_number)
-    return GIFTS[0] if verse_number == 1
-    return GIFTS[0..1].reverse.join(', and ') if verse_number == 2
+    enumerate_first_part_of_gifts(verse_number).concat([GIFTS[0]]).join(', and ')
+  end
 
-    "#{GIFTS[1..(verse_number - 1)].reverse.join(', ')}, and #{GIFTS[0]}" if verse_number >= 3
+  def self.enumerate_first_part_of_gifts(verse_number)
+    return [] if verse_number < 2
+
+    [GIFTS[1..verse_number - 1].reverse.join(', ')]
   end
 end
