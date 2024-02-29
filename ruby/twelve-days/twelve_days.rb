@@ -39,8 +39,7 @@ class TwelveDays
   def self.enumerate_gifts(verse_number)
     return GIFTS[0] if verse_number == 1
     return GIFTS[0..1].reverse.join(', and ') if verse_number == 2
-    return unless (3..12).include? verse_number
 
-    "#{GIFTS[1..(verse_number - 1)].reverse.join(', ')}, and #{GIFTS[0]}"
+    "#{GIFTS[1..(verse_number - 1)].reverse.join(', ')}, and #{GIFTS[0]}" if verse_number >= 3
   end
 end
