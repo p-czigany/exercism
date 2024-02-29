@@ -6,10 +6,10 @@ class Sieve
   end
 
   def primes
-    possible_primes = (2..@upper_limit).to_a.reverse
+    possible_primes = (2..@upper_limit).to_a
     primes = []
     until possible_primes.empty?
-      current = possible_primes.pop
+      current = possible_primes.shift
       next unless prime? current
 
       possible_primes = remove_multiples(possible_primes, current)
