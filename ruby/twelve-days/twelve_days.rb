@@ -1,10 +1,5 @@
 # frozen_string_literal: true
 
-# Write your code for the 'Twelve Days' exercise in this file. Make the tests in
-# `twelve_days_test.rb` pass.
-#
-# To get started with TDD, see the `README.md` file in your
-# `ruby/twelve-days` directory.
 class TwelveDays
   ORDINALS = %w[first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth].freeze
   GIFTS = ['a Partridge in a Pear Tree',
@@ -21,7 +16,12 @@ class TwelveDays
            'twelve Drummers Drumming'].freeze
 
   def self.song
-    verse 1
+    verses = []
+    (1..12).each do |verse_number|
+      result = verse(verse_number)
+      verses << result
+    end
+    verses.join("\n\n").concat("\n")
   end
 
   def self.verse(verse_number)
