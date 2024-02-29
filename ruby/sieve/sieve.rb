@@ -1,7 +1,22 @@
-=begin
-Write your code for the 'Sieve' exercise in this file. Make the tests in
-`sieve_test.rb` pass.
+class Sieve
+  def initialize(upper_limit)
+    @upper_limit = upper_limit
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/sieve` directory.
-=end
+  def primes
+    primes = []
+    (2..upper_limit).each do |current|
+      primes << current if prime? current
+    end
+    primes
+  end
+
+  attr_reader :upper_limit
+
+  def prime?(current)
+    (2..current - 1).each do |possible_divider|
+      return false if (current % possible_divider).zero?
+    end
+    true
+  end
+end
