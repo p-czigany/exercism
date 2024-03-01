@@ -22,30 +22,36 @@ class SpaceAge
   end
 
   def on_mercury
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Mercury']
+    on_planet 'Mercury'
   end
 
   def on_venus
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Venus']
+    on_planet 'Venus'
   end
 
   def on_mars
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Mars']
+    on_planet 'Mars'
   end
 
   def on_jupiter
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Jupiter']
+    on_planet 'Jupiter'
   end
 
   def on_saturn
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Saturn']
+    on_planet 'Saturn'
   end
 
   def on_uranus
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Uranus']
+    on_planet 'Uranus'
   end
 
   def on_neptune
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Neptune']
+    on_planet 'Neptune'
+  end
+
+  private
+
+  def on_planet(planet)
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR[planet]
   end
 end
