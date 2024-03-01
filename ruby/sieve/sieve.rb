@@ -19,7 +19,7 @@ class Sieve
   private
 
   def prime?(current)
-    (2..current - 1).each do |possible_divider|
+    (2..current - Integer.sqrt(current)).each do |possible_divider|
       return false if (current % possible_divider).zero?
     end
     true
