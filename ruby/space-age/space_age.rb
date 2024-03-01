@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class SpaceAge
   SECONDS_IN_A_MINUTE = 60
   MINUTES_IN_AN_HOUR = 60
@@ -25,5 +23,29 @@ class SpaceAge
 
   def on_mercury
     on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Mercury']
+  end
+
+  def on_venus
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Venus']
+  end
+
+  def on_mars
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Mars']
+  end
+
+  def on_jupiter
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Jupiter']
+  end
+
+  def on_saturn
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Saturn']
+  end
+
+  def on_uranus
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Uranus']
+  end
+
+  def on_neptune
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR['Neptune']
   end
 end
