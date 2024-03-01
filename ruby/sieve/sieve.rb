@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Sieve
   def initialize(upper_limit)
     @upper_limit = upper_limit
@@ -17,6 +15,8 @@ class Sieve
     end
     primes
   end
+
+  private
 
   def prime?(current)
     (2..current - 1).each do |possible_divider|
