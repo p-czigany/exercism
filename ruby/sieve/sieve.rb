@@ -5,39 +5,30 @@ class Sieve
 
   def primes
     primes = []
-    (2..upper_limit).each do |current|
-      primes << current if prime? primes, current
+    sieve = Array.new(upper_limit, true)
+    return primes unless sieve.size >= 2
+
+    index = 1
+    until index.nil?
+      primes << index + 1
+      change_every_nth_to_false(sieve, index + 1)
+      index = index_of_first_true_after_i(sieve, index)
     end
     primes
   end
 
   private
 
-  def prime?(primes, current)
-    binary_search_less_than_or_equal(primes, Integer.sqrt(current)).each do |possible_divider|
-      return false if (current % possible_divider).zero?
+  def change_every_nth_to_false(arr, prime)
+    (2 * prime - 1...arr.length).step(prime) do |index|
+      arr[index] = false
     end
-    true
+  end
+
+  def index_of_first_true_after_i(arr, ind)
+    index = arr[ind + 1..].index(true)
+    index.nil? ? nil : index + ind + 1
   end
 
   attr_reader :upper_limit
-
-  def binary_search_less_than_or_equal(arr, target)
-    left = 0
-    right = arr.length - 1
-    index = -1
-
-    while left <= right
-      mid = (left + right) / 2
-
-      if arr[mid] <= target
-        index = mid
-        left = mid + 1
-      else
-        right = mid - 1
-      end
-    end
-
-    arr[0..index]
-  end
 end
