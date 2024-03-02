@@ -8,7 +8,7 @@ class Sieve
     primes = []
     until possible_primes.empty?
       current = possible_primes.shift
-      next unless prime? current
+      next unless prime? current, primes
 
       possible_primes = remove_multiples(possible_primes, current)
       primes << current
@@ -18,8 +18,8 @@ class Sieve
 
   private
 
-  def prime?(current)
-    (2..Integer.sqrt(current)).each do |possible_divider|
+  def prime?(current, primes)
+    primes.select { |prime| prime < Integer.sqrt(current) }.each do |possible_divider|
       return false if (current % possible_divider).zero?
     end
     true
