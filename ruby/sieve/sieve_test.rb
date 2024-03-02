@@ -43,6 +43,12 @@ class SieveTest < Minitest::Test
   end
 
   def test_find_primes_up_to100000
+    # skip
     Sieve.new(100_000).primes
+  end
+
+  def test_find_primes_up_to1000000
+    # skip
+    Sieve.new(1_000_000).primes
   end
 end
