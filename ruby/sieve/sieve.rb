@@ -4,10 +4,8 @@ class Sieve
   end
 
   def primes
-    possible_primes = (2..@upper_limit).to_a
     primes = []
-    until possible_primes.empty?
-      current = possible_primes.shift
+    (2..upper_limit).each do |current|
       primes << current if prime? current
     end
     primes
@@ -21,4 +19,6 @@ class Sieve
     end
     true
   end
+
+  attr_reader :upper_limit
 end
