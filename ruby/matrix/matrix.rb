@@ -4,13 +4,9 @@ class Matrix
   attr_reader :body
 
   def initialize(body_string)
-    row_strings = body_string.split("\n")
-    matrix = []
-    row_strings.each do |row_string|
-      row = row_string.split.map(&:to_i)
-      matrix << row
+    @body = body_string.split("\n").map do |row_string|
+      row_string.split.map(&:to_i)
     end
-    @body = matrix
   end
 
   public
