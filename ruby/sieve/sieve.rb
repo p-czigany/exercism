@@ -15,16 +15,10 @@ class Sieve
     (2..upper_limit).each { |number| primes << number if sieve[number - 1] }
   end
 
-  public
-
-  def primes
+  def calculate
     primes = []
     sieve = Array.new(upper_limit, true)
-    return primes unless sieve.size >= 2
-
-    index = 0
-    until index >= Integer.sqrt(upper_limit)
-      index += 1
+    (1..Integer.sqrt(upper_limit - 1)).each do |index|
       next unless sieve[index]
 
       delete_multiples(sieve, index + 1)
@@ -32,5 +26,11 @@ class Sieve
 
     collect_primes_from_sieve(primes, sieve)
     primes
+  end
+
+  public
+
+  def primes
+    @primes ||= calculate
   end
 end
