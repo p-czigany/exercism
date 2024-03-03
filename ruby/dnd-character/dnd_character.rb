@@ -2,7 +2,7 @@ class DndCharacter
   BASE_HITPOINTS = 10
 
   def self.modifier(stat)
-    Integer((stat - 10) / 2).floor
+    (stat - 10) / 2
   end
 
   def self.roll_d6
