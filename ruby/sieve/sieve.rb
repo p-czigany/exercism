@@ -1,7 +1,19 @@
 class Sieve
+  private
+
+  attr_reader :upper_limit
+
   def initialize(upper_limit)
     @upper_limit = upper_limit
   end
+
+  def delete_multiples(arr, prime)
+    (2 * prime - 1...arr.length).step(prime) do |index|
+      arr[index] = false
+    end
+  end
+
+  public
 
   def primes
     primes = []
@@ -14,18 +26,8 @@ class Sieve
       next unless sieve[index]
 
       primes << index + 1
-      change_every_nth_to_false(sieve, index + 1)
+      delete_multiples(sieve, index + 1)
     end
     primes
   end
-
-  private
-
-  def change_every_nth_to_false(arr, prime)
-    (2 * prime - 1...arr.length).step(prime) do |index|
-      arr[index] = false
-    end
-  end
-
-  attr_reader :upper_limit
 end
