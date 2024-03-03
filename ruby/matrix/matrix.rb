@@ -20,10 +20,8 @@ class Matrix
   end
 
   def column(column_num)
-    column = []
-    (0..body.length - 1).each do |row_i|
-      column << body[row_i][column_num - 1]
+    (0..body.length - 1).map do |row_i|
+      body[row_i][column_num - 1]
     end
-    column
   end
 end
