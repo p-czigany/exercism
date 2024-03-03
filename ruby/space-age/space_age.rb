@@ -3,7 +3,9 @@ class SpaceAge
   MINUTES_IN_AN_HOUR = 60
   HOURS_IN_A_DAY = 24
   DAYS_IN_AN_EARTH_YEAR = 365.25
+  SECONDS_IN_EARTH_YEAR = SECONDS_IN_A_MINUTE * MINUTES_IN_AN_HOUR * HOURS_IN_A_DAY * DAYS_IN_AN_EARTH_YEAR
   ORBITAL_PERIOD_IN_EARTH_YEAR = {
+    'Earth' => 1,
     'Mercury' => 0.2408467,
     'Venus' => 0.61519726,
     'Mars' => 1.8808158,
@@ -22,40 +24,12 @@ class SpaceAge
   end
 
   def on_planet(planet)
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR[planet]
+    seconds / SECONDS_IN_EARTH_YEAR / ORBITAL_PERIOD_IN_EARTH_YEAR[planet]
   end
 
   public
 
-  def on_earth
-    seconds / SECONDS_IN_A_MINUTE / MINUTES_IN_AN_HOUR / HOURS_IN_A_DAY / DAYS_IN_AN_EARTH_YEAR
-  end
-
-  def on_mercury
-    on_planet 'Mercury'
-  end
-
-  def on_venus
-    on_planet 'Venus'
-  end
-
-  def on_mars
-    on_planet 'Mars'
-  end
-
-  def on_jupiter
-    on_planet 'Jupiter'
-  end
-
-  def on_saturn
-    on_planet 'Saturn'
-  end
-
-  def on_uranus
-    on_planet 'Uranus'
-  end
-
-  def on_neptune
-    on_planet 'Neptune'
+  ORBITAL_PERIOD_IN_EARTH_YEAR.each do |planet, _period|
+    define_method("on_#{planet.downcase}") { on_planet planet }
   end
 end
