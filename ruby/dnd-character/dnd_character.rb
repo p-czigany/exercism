@@ -11,7 +11,7 @@ class DndCharacter
 
   def self.roll_attribute
     rolls = []
-    lowest = 7
+    lowest = 6
     4.times do
       roll = roll_d6
       lowest = roll if roll < lowest
