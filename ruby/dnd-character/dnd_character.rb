@@ -23,12 +23,9 @@ class DndCharacter
   private
 
   def initialize
-    @strength = self.class.roll_attribute
-    @dexterity = self.class.roll_attribute
-    @constitution = self.class.roll_attribute
-    @intelligence = self.class.roll_attribute
-    @wisdom = self.class.roll_attribute
-    @charisma = self.class.roll_attribute
+    %i[strength dexterity constitution intelligence wisdom charisma].each do |attribute|
+      instance_variable_set("@#{attribute}", self.class.roll_attribute)
+    end
 
     @hitpoints = self.class.modifier(constitution) + BASE_HITPOINTS
   end
