@@ -8,9 +8,11 @@ class Sieve
   end
 
   def delete_multiples(arr, prime)
-    (2 * prime - 1...arr.length).step(prime) do |index|
-      arr[index] = false
-    end
+    (prime**2 - 1...upper_limit).step(prime) { |index| arr[index] = false }
+  end
+
+  def collect_primes_from_sieve(primes, sieve)
+    (2..upper_limit).each { |number| primes << number if sieve[number - 1] }
   end
 
   public
@@ -21,13 +23,14 @@ class Sieve
     return primes unless sieve.size >= 2
 
     index = 0
-    until index > upper_limit
+    until index >= Integer.sqrt(upper_limit)
       index += 1
       next unless sieve[index]
 
-      primes << index + 1
       delete_multiples(sieve, index + 1)
     end
+
+    collect_primes_from_sieve(primes, sieve)
     primes
   end
 end
