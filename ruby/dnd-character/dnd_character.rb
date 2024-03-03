@@ -11,13 +11,8 @@ class DndCharacter
 
   def self.roll_attribute
     rolls = []
-    lowest = 6
-    4.times do
-      roll = roll_d6
-      lowest = roll if roll < lowest
-      rolls << roll
-    end
-    rolls.sum - lowest
+    4.times { rolls << roll_d6 }
+    rolls.sort![1..].sum
   end
 
   private
