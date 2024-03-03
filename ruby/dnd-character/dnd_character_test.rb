@@ -133,7 +133,7 @@ class DndCharacterTest < Minitest::Test
   end
 
   def test_creation_of_a_million_characters
-    # skip
+    skip
     1_000_000.times { DndCharacter.new }
   end
 end
