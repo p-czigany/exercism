@@ -10,6 +10,8 @@ class Series
   public
 
   def slices(length)
+    raise ArgumentError if length > string.length || !length.positive?
+
     ary = []
     (0..string.length - length).each do |i|
       ary << string[i, length]
