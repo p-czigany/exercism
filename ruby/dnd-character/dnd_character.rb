@@ -10,7 +10,7 @@ class DndCharacter
   end
 
   def self.roll_attribute
-    rolls = 4.times.map { roll_d6 }
+    rolls = Array.new(4) { roll_d6 }
     rolls.sum - rolls.min
   end
 
