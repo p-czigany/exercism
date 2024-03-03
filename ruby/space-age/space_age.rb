@@ -13,12 +13,22 @@ class SpaceAge
     'Neptune' => 164.79132
   }.freeze
 
+  private
+
+  attr_reader :seconds
+
   def initialize(seconds)
     @seconds = seconds
   end
 
+  def on_planet(planet)
+    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR[planet]
+  end
+
+  public
+
   def on_earth
-    @seconds / SECONDS_IN_A_MINUTE / MINUTES_IN_AN_HOUR / HOURS_IN_A_DAY / DAYS_IN_AN_EARTH_YEAR
+    seconds / SECONDS_IN_A_MINUTE / MINUTES_IN_AN_HOUR / HOURS_IN_A_DAY / DAYS_IN_AN_EARTH_YEAR
   end
 
   def on_mercury
@@ -47,11 +57,5 @@ class SpaceAge
 
   def on_neptune
     on_planet 'Neptune'
-  end
-
-  private
-
-  def on_planet(planet)
-    on_earth / ORBITAL_PERIOD_IN_EARTH_YEAR[planet]
   end
 end
