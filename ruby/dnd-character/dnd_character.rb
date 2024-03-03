@@ -10,9 +10,8 @@ class DndCharacter
   end
 
   def self.roll_attribute
-    rolls = []
-    4.times { rolls << roll_d6 }
-    rolls.sort![1..].sum
+    rolls = 4.times.map { roll_d6 }
+    rolls.sum - rolls.min
   end
 
   private
