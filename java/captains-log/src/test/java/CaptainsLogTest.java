@@ -1,8 +1,7 @@
-import org.junit.jupiter.api.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Random;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.*;
 
 public class CaptainsLogTest {
 
@@ -50,7 +49,7 @@ public class CaptainsLogTest {
   }
 
   @Test
-//  @Disabled
+  //  @Disabled
   @Tag("task:2")
   @DisplayName("Generated ship registry numbers are valid")
   public void testRandomShipRegistryNumberIsValid() {
@@ -59,14 +58,14 @@ public class CaptainsLogTest {
     for (int i = 0; i < 100; i++) {
       var shipRegistryNumber = captainsLog.randomShipRegistryNumber();
       var number = Integer.parseInt(shipRegistryNumber.substring(4));
-//      System.out.println(number);
+      //      System.out.println(number);
 
       assertThat(number).isBetween(1000, 9999);
     }
   }
 
   @Test
-  @Disabled
+  //  @Disabled
   @Tag("task:3")
   @DisplayName("Generating a random stardate")
   public void testRandomStardate() {
@@ -76,7 +75,7 @@ public class CaptainsLogTest {
   }
 
   @Test
-  @Disabled
+  //  @Disabled
   @Tag("task:3")
   @DisplayName("Generated stardates are valid")
   public void testRandomStardateIsValid() {

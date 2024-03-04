@@ -7,7 +7,7 @@ class CaptainsLog {
   private static final char[] PLANET_CLASSES =
       new char[] {'D', 'H', 'J', 'K', 'L', 'M', 'N', 'R', 'T', 'Y'};
 
-  private Random random;
+  private final Random random;
 
   CaptainsLog(Random random) {
     this.random = random;
@@ -22,7 +22,6 @@ class CaptainsLog {
   }
 
   double randomStardate() {
-    throw new UnsupportedOperationException(
-        "Please implement the CaptainsLog.randomStardate() method");
+    return random.nextDouble(41000d, 42000d);
   }
 }
