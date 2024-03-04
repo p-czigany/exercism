@@ -1,6 +1,9 @@
 import static java.lang.String.format;
+import static java.lang.String.join;
 
 public class GameMaster {
+
+  private static final TravelMethod DEFAULT_TRAVEL_METHOD = TravelMethod.WALKING;
 
   public String describe(Character character) {
     return format(
@@ -14,10 +17,15 @@ public class GameMaster {
         destination.getName(), destination.getInhabitants());
   }
 
-  // TODO: define a 'describe' method that returns a description of a TravelMethod
+  public String describe(TravelMethod travelMethod) {
+    return format("You're traveling to your destination %s.", travelMethod.toString());
+  }
 
-  // TODO: define a 'describe' method that returns a description of a Character, Destination and
-  // TravelMethod
+  public String describe(Character character, Destination destination, TravelMethod travelMethod) {
+    return join(" ", describe(character), describe(travelMethod), describe(destination));
+  }
 
-  // TODO: define a 'describe' method that returns a description of a Character and Destination
+  public String describe(Character character, Destination destination) {
+    return describe(character, destination, DEFAULT_TRAVEL_METHOD);
+  }
 }

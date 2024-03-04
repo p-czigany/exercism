@@ -112,7 +112,7 @@ public class GameMasterTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Describe the travel method: walking")
     public void describeWalkingTravelMethod() {
@@ -121,7 +121,7 @@ public class GameMasterTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Describe the travel method: horseback")
     public void describeHorseTravelMethod() {
@@ -130,7 +130,7 @@ public class GameMasterTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:4")
     @DisplayName("Implemented the describeCharacterToDestinationByTravelMethod method")
     public void implementedDescribeCharacterTravelingToDestinationWithExplicitTravelMethod() {
@@ -152,7 +152,7 @@ public class GameMasterTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:4")
     @DisplayName("Describe a character traveling to a destination")
     public void describeCharacterTravelingToDestinationWithExplicitTravelMethod() {
@@ -171,7 +171,7 @@ public class GameMasterTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:5")
     @DisplayName("Implemented the describeCharacterToDestination method")
     public void implementedDescribeCharacterTravelingToDestinationWithoutExplicitTravelMethod() {
@@ -190,7 +190,7 @@ public class GameMasterTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:5")
     @DisplayName("Combined description should handle character and destination with default travel method")
     public void describeCharacterTravelingToDestinationWithoutExplicitTravelMethod() {
