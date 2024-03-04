@@ -26,20 +26,8 @@ class AppointmentScheduler {
   }
 
   public String getDescription(LocalDateTime appointmentDate) {
-    var day = wordInTitleCase(appointmentDate.getDayOfWeek().toString());
-    var month = wordInTitleCase(appointmentDate.getMonth().toString());
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
-    return format(
-        "You have an appointment on %s, %s %d, %d, at %s.",
-        day,
-        month,
-        appointmentDate.getDayOfMonth(),
-        appointmentDate.getYear(),
-        appointmentDate.format(formatter));
-  }
-
-  private String wordInTitleCase(String word) {
-    return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
+    var formatter = DateTimeFormatter.ofPattern("EEEE, MMMM d, uuuu, 'at' h:mm a", Locale.ENGLISH);
+    return format("You have an appointment on %s.", appointmentDate.format(formatter));
   }
 
   public LocalDate getAnniversaryDate() {
