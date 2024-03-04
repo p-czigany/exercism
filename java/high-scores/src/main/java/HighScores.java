@@ -19,7 +19,7 @@ class HighScores {
   }
 
   Integer personalBest() {
-    return scores().stream().max(Comparator.naturalOrder()).get();
+    return scores().stream().max(Comparator.naturalOrder()).orElse(null);
   }
 
   List<Integer> personalTopThree() {
