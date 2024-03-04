@@ -18,7 +18,7 @@ class CaptainsLog {
   }
 
   String randomShipRegistryNumber() {
-    return format("NCC-%d", 1000 + random.nextInt(9000));
+    return format("NCC-%d", random.nextInt(1000, 10000));
   }
 
   double randomStardate() {
