@@ -1,6 +1,7 @@
 import static java.lang.String.format;
 
 import java.util.LinkedHashMap;
+import java.util.stream.Stream;
 
 class ResistorColorTrio {
 
@@ -31,19 +32,15 @@ class ResistorColorTrio {
     return valueOfFirstTwo(colors) * (long) Math.pow(10, colorCode(colors[2]));
   }
 
-  private String convertToEngineeringNotation(long number) {
-    String[] suffixes = {"", "kilo", "mega", "giga"};
-    int magnitude = 0;
+  private String convertToNotation(long number) {
+    var suffixes = new String[] {"", "kilo", "mega", "giga"};
 
-    while (number >= 1000 && magnitude < suffixes.length - 1) {
-      number /= 1000;
-      magnitude++;
-    }
+    var magnitude = (int) Stream.iterate(number, n -> n >= 1000, n -> n / 1000).count();
 
-    return number + " " + suffixes[magnitude];
+    return number / (int) Math.pow(1000, magnitude) + " " + suffixes[magnitude];
   }
 
   String label(String[] colors) {
-    return format("%sohms", convertToEngineeringNotation(value(colors)));
+    return format("%sohms", convertToNotation(value(colors)));
   }
 }
