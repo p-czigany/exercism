@@ -32,15 +32,15 @@ class ResistorColorTrio {
   }
 
   private String convertToEngineeringNotation(long number) {
-    if (number < 1000) {
-      return number + " ";
-    } else if (number < 1000000) {
-      return number / 1000 + " kilo";
-    } else if (number < 1000000000) {
-      return number / 1000000 + " mega";
-    } else {
-      return number / 1000000000 + " giga";
+    String[] suffixes = {"", "kilo", "mega", "giga"};
+    int magnitude = 0;
+
+    while (number >= 1000 && magnitude < suffixes.length - 1) {
+      number /= 1000;
+      magnitude++;
     }
+
+    return number + " " + suffixes[magnitude];
   }
 
   String label(String[] colors) {
