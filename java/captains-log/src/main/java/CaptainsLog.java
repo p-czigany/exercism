@@ -1,3 +1,5 @@
+import static java.lang.String.format;
+
 import java.util.Random;
 
 class CaptainsLog {
@@ -16,8 +18,7 @@ class CaptainsLog {
   }
 
   String randomShipRegistryNumber() {
-    throw new UnsupportedOperationException(
-        "Please implement the CaptainsLog.randomShipRegistryNumber() method");
+    return format("NCC-%d", 1000 + random.nextInt(9000));
   }
 
   double randomStardate() {
