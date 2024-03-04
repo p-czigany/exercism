@@ -34,7 +34,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment from months ago has passed")
     public void testHasPassedMonthsAgo() {
@@ -44,7 +44,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment from days ago has passed")
     public void testHasPassedDaysAgo() {
@@ -54,7 +54,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment from hours ago has passed")
     public void testHasPassedHoursAgo() {
@@ -64,7 +64,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment from minutes ago has passed")
     public void testHasPassedMinutesAgo() {
@@ -74,7 +74,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment from one minute ago has passed")
     public void testHasPassedOneMinuteAgo() {
@@ -84,7 +84,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment minutes from now has not passed")
     public void testHasPassedMinutesFromNow() {
@@ -94,7 +94,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment hours from now has not passed")
     public void testHasPassedHoursFromNow() {
@@ -104,7 +104,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment days from now has not passed")
     public void testHasPassedDaysFromNow() {
@@ -114,7 +114,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment months from now has not passed")
     public void testHasPassedMonthsFromNow() {
@@ -124,7 +124,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:2")
     @DisplayName("Appointment years from now has not passed")
     public void testHasPassedYearsFromNow() {
@@ -134,7 +134,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Early morning appointment is not an afternoon appointment")
     public void testIsAfternoonAppointmentForEarlyMorningAppointment() {
@@ -144,7 +144,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Late morning appointment is not an afternoon appointment")
     public void testIsAfternoonAppointmentForLateMorningAppointment() {
@@ -154,7 +154,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Noon appointment is an afternoon appointment")
     public void testIsAfternoonAppointmentForNoonAppointment() {
@@ -164,7 +164,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Early afternoon appointment is an afternoon appointment")
     public void testIsAfternoonAppointmentForEarlyAfternoonAppointment() {
@@ -174,7 +174,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Late morning appointment is an afternoon appointment")
     public void testIsAfternoonAppointmentForLateAfternoonAppointment() {
@@ -184,7 +184,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Early evening appointment is not an afternoon appointment")
     public void testIsAfternoonAppointmentForEarlyEveningAppointment() {
@@ -194,7 +194,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:3")
     @DisplayName("Late evening appointment is not an afternoon appointment")
     public void testIsAfternoonAppointmentForLateEveningAppointment() {
@@ -204,7 +204,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:4")
     @DisplayName("Description on Friday afternoon")
     public void testDescriptionOnFridayAfternoon() {
@@ -215,7 +215,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:4")
     @DisplayName("Description on Thursday afternoon")
     public void testDescriptionOnThursdayAfternoon() {
@@ -226,7 +226,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:4")
     @DisplayName("Description on Wednesday morning")
     public void testDescriptionOnWednesdayMorning() {
@@ -237,7 +237,7 @@ public class AppointmentSchedulerTest {
     }
 
     @Test
-    @Disabled
+//    @Disabled
     @Tag("task:5")
     @DisplayName("The anniversary date")
     public void testAnniversaryDate() {
