@@ -6,19 +6,15 @@ public class GameMaster {
   private static final TravelMethod DEFAULT_TRAVEL_METHOD = TravelMethod.WALKING;
 
   public String describe(Character character) {
-    return format(
-        "You're a level %d %s with %d hit points.",
-        character.getLevel(), character.getCharacterClass(), character.getHitPoints());
+    return format("You're %s.", character);
   }
 
   public String describe(Destination destination) {
-    return format(
-        "You've arrived at %s, which has %d inhabitants.",
-        destination.getName(), destination.getInhabitants());
+    return format("You've arrived at %s.", destination);
   }
 
   public String describe(TravelMethod travelMethod) {
-    return format("You're traveling to your destination %s.", travelMethod.toString());
+    return format("You're traveling to your destination %s.", travelMethod);
   }
 
   public String describe(Character character, Destination destination, TravelMethod travelMethod) {
