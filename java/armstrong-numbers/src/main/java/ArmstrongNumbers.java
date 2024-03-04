@@ -1,11 +1,11 @@
 class ArmstrongNumbers {
 
   boolean isArmstrongNumber(int numberToCheck) {
-    var numberString = String.valueOf(numberToCheck).toCharArray();
-    var power = numberString.length;
+    var digits = String.valueOf(numberToCheck).toCharArray();
+    var numberOfDigits = digits.length;
     var sum = 0;
-    for (char number : numberString) {
-      sum += number ^ power;
+    for (char digit : digits) {
+      sum += digit ^ numberOfDigits;
     }
     return numberToCheck == sum;
   }
