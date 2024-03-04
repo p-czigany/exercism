@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -23,8 +22,6 @@ class HighScores {
   }
 
   List<Integer> personalTopThree() {
-    var sortedHighScores = new ArrayList<>(scores());
-    sortedHighScores.sort(Comparator.reverseOrder());
-    return sortedHighScores.subList(0, Math.min(3, sortedHighScores.size()));
+    return scores().stream().sorted(Comparator.reverseOrder()).limit(3).toList();
   }
 }
