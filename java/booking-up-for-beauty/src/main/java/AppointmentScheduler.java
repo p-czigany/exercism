@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.MonthDay;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -11,6 +12,7 @@ class AppointmentScheduler {
   private static final String SCHEDULE_MESSAGE_FORMAT = "MM/dd/yyyy HH:mm:ss";
   private static final String APPOINTMENT_MESSAGE_FORMAT =
       "'You have an appointment on 'EEEE, MMMM d, uuuu, 'at' h:mm a'.'";
+  private static final MonthDay ANNIVERSARY = MonthDay.of(Month.SEPTEMBER, 15);
 
   private static final DateTimeFormatter SCHEDULE_FORMATTER =
       DateTimeFormatter.ofPattern(SCHEDULE_MESSAGE_FORMAT);
@@ -35,6 +37,7 @@ class AppointmentScheduler {
   }
 
   public LocalDate getAnniversaryDate() {
-    return LocalDate.of(LocalDate.now().getYear(), Month.SEPTEMBER, 15);
+    return LocalDate.of(
+        LocalDate.now().getYear(), ANNIVERSARY.getMonth(), ANNIVERSARY.getDayOfMonth());
   }
 }
