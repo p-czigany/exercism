@@ -31,21 +31,19 @@ class ResistorColorTrio {
     return valueOfFirstTwo(colors) * (long) Math.pow(10, colorCode(colors[2]));
   }
 
+  private String convertToEngineeringNotation(long number) {
+    if (number < 1000) {
+      return number + " ";
+    } else if (number < 1000000) {
+      return number / 1000 + " kilo";
+    } else if (number < 1000000000) {
+      return number / 1000000 + " mega";
+    } else {
+      return number / 1000000000 + " giga";
+    }
+  }
+
   String label(String[] colors) {
-    var value = value(colors);
-    if (value == 0) return format("%d ohms", value);
-    if (value % (int) Math.pow(10, 9) == 0) {
-      return format("%d gigaohms", value / (int) Math.pow(10, 9));
-    }
-    if (value % (int) Math.pow(10, 6) == 0) {
-      return format("%d megaohms", value / (int) Math.pow(10, 6));
-    }
-    if (value % (int) Math.pow(10, 3) == 0) {
-      return format("%d kiloohms", value / (int) Math.pow(10, 3));
-    }
-    if (value % (int) Math.pow(10, 0) == 0) {
-      return format("%d ohms", value / (int) Math.pow(10, 0));
-    }
-    return format("%d ohms", value);
+    return format("%sohms", convertToEngineeringNotation(value(colors)));
   }
 }
