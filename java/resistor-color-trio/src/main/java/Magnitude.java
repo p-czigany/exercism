@@ -15,29 +15,12 @@ public enum Magnitude {
     this.metricPrefix = metricPrefix;
   }
 
-  public static Magnitude getMagnitude(long number) {
-    return getByPowerOfOneThousand(
-        Math.min(
-            (int) Stream.iterate(number, n -> n >= ONE_THOUSAND, n -> n / ONE_THOUSAND).count(),
-            maxPowerOfOneThousand()));
+  public int getPowerOfOneThousand() {
+    return this.powerOfOneThousand;
   }
 
-  private static int maxPowerOfOneThousand() {
-    return maxMagnitude().getPowerOfOneThousand();
-  }
-
-  private static Magnitude maxMagnitude() {
-    Magnitude maxEnum = null;
-    int maxValue = Integer.MIN_VALUE;
-
-    for (Magnitude enumValue : Magnitude.values()) {
-      if (enumValue.getPowerOfOneThousand() > maxValue) {
-        maxValue = enumValue.getPowerOfOneThousand();
-        maxEnum = enumValue;
-      }
-    }
-
-    return maxEnum;
+  public String getMetricPrefix() {
+    return this.metricPrefix;
   }
 
   private static Magnitude getByPowerOfOneThousand(int powerOfOneThousand) {
@@ -49,11 +32,17 @@ public enum Magnitude {
     throw new IllegalArgumentException("No enum constant with value " + powerOfOneThousand);
   }
 
-  public int getPowerOfOneThousand() {
-    return this.powerOfOneThousand;
+  private static int maxPowerOfOneThousand() {
+    return Stream.of(Magnitude.values())
+        .mapToInt(Magnitude::getPowerOfOneThousand)
+        .max()
+        .orElse(Integer.MIN_VALUE);
   }
 
-  public String getMetricPrefix() {
-    return this.metricPrefix;
+  public static Magnitude getMagnitude(long number) {
+    return getByPowerOfOneThousand(
+        Math.min(
+            (int) Stream.iterate(number, n -> n >= ONE_THOUSAND, n -> n / ONE_THOUSAND).count(),
+            maxPowerOfOneThousand()));
   }
 }
