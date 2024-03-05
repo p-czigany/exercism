@@ -1,5 +1,4 @@
 import java.util.Map;
-import java.util.stream.Stream;
 
 class ResistorColorTrio {
 
@@ -29,11 +28,9 @@ class ResistorColorTrio {
   }
 
   private String convertToNotation(long number) {
-    var suffixes = new String[] {"", "kilo", "mega", "giga"};
-
-    var magnitude = (int) Stream.iterate(number, n -> n >= 1000, n -> n / 1000).count();
-
-    return number / (int) Math.pow(1000, magnitude) + " " + suffixes[magnitude];
+    return number / (int) Math.pow(1000, Magnitude.getMagnitude(number).getPowerOfOneThousand())
+        + " "
+        + Magnitude.getMagnitude(number).getMetricPrefix();
   }
 
   String label(String[] colors) {
