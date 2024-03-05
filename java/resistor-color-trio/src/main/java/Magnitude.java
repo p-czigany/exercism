@@ -45,4 +45,12 @@ public enum Magnitude {
             (int) Stream.iterate(number, n -> n >= ONE_THOUSAND, n -> n / ONE_THOUSAND).count(),
             maxPowerOfOneThousand()));
   }
+
+  public static String convertToNotation(long number) {
+    var magnitude = getMagnitude(number);
+    return String.format(
+        "%d %s",
+        number / (int) Math.pow(ONE_THOUSAND, magnitude.getPowerOfOneThousand()),
+        magnitude.getMetricPrefix());
+  }
 }

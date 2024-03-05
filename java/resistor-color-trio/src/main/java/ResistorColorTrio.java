@@ -27,13 +27,7 @@ class ResistorColorTrio {
     return valueOfFirstTwo(colors) * (long) Math.pow(10, colorCode(colors[2]));
   }
 
-  private String convertToNotation(long number) {
-    return number / (int) Math.pow(1000, Magnitude.getMagnitude(number).getPowerOfOneThousand())
-        + " "
-        + Magnitude.getMagnitude(number).getMetricPrefix();
-  }
-
   String label(String[] colors) {
-    return String.format("%sohms", convertToNotation(value(colors)));
+    return String.format("%sohms", Magnitude.convertToNotation(value(colors)));
   }
 }
