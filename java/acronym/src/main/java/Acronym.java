@@ -13,7 +13,7 @@ class Acronym {
     this.phrase = phrase;
   }
 
-  private void createAcronym() {
+  private void abbreviate() {
     abbreviation =
         Arrays.stream(phrase.split(REGEX_DELINEATING_WORDS))
             .map(word -> String.valueOf(word.charAt(0)))
@@ -23,7 +23,7 @@ class Acronym {
 
   String get() {
     if (abbreviation == null) {
-      createAcronym();
+      abbreviate();
     }
     return abbreviation;
   }
