@@ -7,6 +7,9 @@ class Complement
   }.freeze
 
   def self.of_dna(rna_sequence)
-    rna_sequence.chars.map { |nucleotide| NUCLEOTIDE_TRANSCIPTIONS[nucleotide] }.join
+    rna_sequence
+      .chars
+      .map { |nucleotide| NUCLEOTIDE_TRANSCIPTIONS[nucleotide] }
+      .join
   end
 end
