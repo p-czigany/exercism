@@ -1,17 +1,12 @@
 class Complement
-  def self.of_nucleotide(nucleotide)
-    return '' if nucleotide == ''
-
-    return 'C' if nucleotide == 'G'
-
-    return 'A' if nucleotide == 'T'
-
-    return 'U' if nucleotide == 'A'
-
-    'G' if nucleotide == 'C'
-  end
+  NUCLEOTIDE_TRANSCIPTIONS = {
+    'G' => 'C',
+    'C' => 'G',
+    'T' => 'A',
+    'A' => 'U'
+  }.freeze
 
   def self.of_dna(rna_sequence)
-    rna_sequence.chars.map { |nucleotide| of_nucleotide(nucleotide) }.join
+    rna_sequence.chars.map { |nucleotide| NUCLEOTIDE_TRANSCIPTIONS[nucleotide] }.join
   end
 end
