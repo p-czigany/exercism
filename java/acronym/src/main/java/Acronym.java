@@ -6,25 +6,20 @@ class Acronym {
   /** any length of dashes, undescores and whitespace */
   private static final String REGEX_DELINEATING_WORDS = "[-_ ]+";
 
-  private final String phrase;
-  private String abbreviation;
+  private final String abbreviation;
 
   Acronym(String phrase) {
-    this.phrase = phrase;
+    this.abbreviation = abbreviate(phrase);
   }
 
-  private void abbreviate() {
-    abbreviation =
-        Arrays.stream(phrase.split(REGEX_DELINEATING_WORDS))
-            .map(word -> String.valueOf(word.charAt(0)))
-            .collect(Collectors.joining())
-            .toUpperCase();
+  private String abbreviate(String phrase) {
+    return Arrays.stream(phrase.split(REGEX_DELINEATING_WORDS))
+        .map(word -> String.valueOf(word.charAt(0)))
+        .collect(Collectors.joining())
+        .toUpperCase();
   }
 
   String get() {
-    if (abbreviation == null) {
-      abbreviate();
-    }
     return abbreviation;
   }
 }
