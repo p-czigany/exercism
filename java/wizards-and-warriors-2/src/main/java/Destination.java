@@ -18,6 +18,7 @@ public class Destination {
     this.inhabitants = inhabitants;
   }
 
+  @Override
   public String toString() {
     return String.format("%s, which has %d inhabitants", this.getName(), this.getInhabitants());
   }

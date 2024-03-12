@@ -27,6 +27,7 @@ public class Character {
     this.hitPoints = hitPoints;
   }
 
+  @Override
   public String toString() {
     return String.format(
         "a level %d %s with %d hit points",
