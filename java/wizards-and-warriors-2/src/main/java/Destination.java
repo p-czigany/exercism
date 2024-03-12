@@ -20,6 +20,6 @@ public class Destination {
 
   @Override
   public String toString() {
-    return String.format("%s, which has %d inhabitants", this.getName(), this.getInhabitants());
+    return "%s, which has %d inhabitants".formatted(this.getName(), this.getInhabitants());
   }
 }

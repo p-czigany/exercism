@@ -29,8 +29,7 @@ public class Character {
 
   @Override
   public String toString() {
-    return String.format(
-        "a level %d %s with %d hit points",
-        this.getLevel(), this.getCharacterClass(), this.getHitPoints());
+    return "a level %d %s with %d hit points"
+        .formatted(this.getLevel(), this.getCharacterClass(), this.getHitPoints());
   }
 }
