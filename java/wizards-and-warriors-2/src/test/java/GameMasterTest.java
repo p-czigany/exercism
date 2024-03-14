@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:1")
     @DisplayName("Describe a character by class: Warrior")
     public void describeWarriorCharacter() {
@@ -38,7 +36,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:1")
     @DisplayName("Describe a character by class: Wizard")
     public void describeWizardCharacter() {
@@ -51,7 +48,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:2")
     @DisplayName("Implemented the describeDestination method")
     public void implementedDescribeDestination() {
@@ -68,7 +64,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:2")
     @DisplayName("Describe a destination: Tol Honeth")
     public void describeSmallTownDestination() {
@@ -81,7 +76,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:2")
     @DisplayName("Describe a destination: Ashaba")
     public void describeLargeTownDestination() {
@@ -94,7 +88,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:3")
     @DisplayName("Implemented the describeTravelMethod method")
     public void implementedDescribeTravelMethod() {
@@ -112,7 +105,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:3")
     @DisplayName("Describe the travel method: walking")
     public void describeWalkingTravelMethod() {
@@ -121,7 +113,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:3")
     @DisplayName("Describe the travel method: horseback")
     public void describeHorseTravelMethod() {
@@ -130,7 +121,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:4")
     @DisplayName("Implemented the describeCharacterToDestinationByTravelMethod method")
     public void implementedDescribeCharacterTravelingToDestinationWithExplicitTravelMethod() {
@@ -152,7 +142,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:4")
     @DisplayName("Describe a character traveling to a destination")
     public void describeCharacterTravelingToDestinationWithExplicitTravelMethod() {
@@ -171,7 +160,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:5")
     @DisplayName("Implemented the describeCharacterToDestination method")
     public void implementedDescribeCharacterTravelingToDestinationWithoutExplicitTravelMethod() {
@@ -190,7 +178,6 @@ public class GameMasterTest {
     }
 
     @Test
-//    @Disabled
     @Tag("task:5")
     @DisplayName("Combined description should handle character and destination with default travel method")
     public void describeCharacterTravelingToDestinationWithoutExplicitTravelMethod() {
