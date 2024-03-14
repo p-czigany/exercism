@@ -114,13 +114,11 @@ public class Say {
         continue;
       }
 
-      var chunkText = fromOneToNineHundredNinetyNine(chunk);
-
       if (!isFirstChunk) {
         result.append(" ");
       }
 
-      result.append(chunkText);
+      result.append(fromOneToNineHundredNinetyNine(chunk));
 
       if (magnitude != 0) result.append(" ").append(SCALE_WORDS.get(magnitude));
 
