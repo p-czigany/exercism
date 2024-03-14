@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -40,6 +41,12 @@ public class Say {
           80, "eighty",
           90, "ninety");
 
+  private static final Map<Integer, String> SCALE_WORDS =
+      Map.of(
+          1, "thousand",
+          2, "million",
+          3, "billion");
+
   private void validate(long number) {
     if (number < 0 || number >= 1_000_000_000_000L) throw new IllegalArgumentException();
   }
@@ -61,29 +68,66 @@ public class Say {
     return String.join("-", digits);
   }
 
-  public String say(long number) {
-    validate(number);
-    if (isInRange(0, 0, number)) return "zero";
+  private String fromOneHundredToNineHundredNinetyNine(long number) {
+    StringBuilder result = new StringBuilder();
+    var hundreds = number / 100;
+    var remainder = number % 100;
+    result.append("%s hundred".formatted(fromOneToNinetyNine(hundreds)));
+    if (remainder != 0) {
+      result.append(" ").append(fromOneToNinetyNine(remainder));
+    }
+    return result.toString();
+  }
+
+  private String fromOneToNineHundredNinetyNine(long number) {
     if (isInRange(11, 19, number)) return TEENS.get((int) number);
     if (isInRange(1, 9, number) || isInRange(20, 99, number)) return fromOneToNinetyNine(number);
+    if (isInRange(100, 999, number)) return fromOneHundredToNineHundredNinetyNine(number);
     return "";
   }
 
-  public List<Long> breakUpIntoChunksOfThousands(long number) {
-    List<Long> chunks = new ArrayList<>();
+  public String say(long number) {
+    validate(number);
+    if (number == 0) return "zero";
 
-    // Handle special case when the number is 0
-    if (number == 0) {
-      chunks.add(0L);
-      return chunks;
-    }
+    return insertScaleWords(breakUpIntoChunksOfThousands(number));
+  }
+
+  private List<Long> breakUpIntoChunksOfThousands(long number) {
+    List<Long> chunks = new LinkedList<>();
 
     while (number > 0) {
-      long chunk = number % 1000; // Extract last three digits
-      chunks.addFirst(chunk); // Add chunk to the beginning of the list
-      number /= 1000; // Remove last three digits
+      chunks.addFirst(number % 1000);
+      number /= 1000;
     }
 
     return chunks;
+  }
+
+  private String insertScaleWords(List<Long> chunksOfThousands) {
+    StringBuilder result = new StringBuilder();
+    int magnitude = chunksOfThousands.size() - 1;
+    var isFirstChunk = true;
+    for (Long chunk : chunksOfThousands) {
+      if (chunk == 0) {
+        magnitude--;
+        continue;
+      }
+
+      var chunkText = fromOneToNineHundredNinetyNine(chunk);
+
+      if (!isFirstChunk) {
+        result.append(" ");
+      }
+
+      result.append(chunkText);
+
+      if (magnitude != 0) result.append(" ").append(SCALE_WORDS.get(magnitude));
+
+      isFirstChunk = false;
+      magnitude--;
+    }
+
+    return result.toString();
   }
 }
