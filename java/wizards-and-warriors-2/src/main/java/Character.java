@@ -27,9 +27,9 @@ public class Character {
     this.hitPoints = hitPoints;
   }
 
-  @Override
-  public String toString() {
-    return "a level %d %s with %d hit points"
-        .formatted(this.getLevel(), this.getCharacterClass(), this.getHitPoints());
-  }
+//  @Override
+//  public String toString() {
+//    return "a level %d %s with %d hit points"
+//        .formatted(this.getLevel(), this.getCharacterClass(), this.getHitPoints());
+//  }
 }
