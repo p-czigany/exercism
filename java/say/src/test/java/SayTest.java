@@ -1,5 +1,6 @@
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -57,10 +58,17 @@ class SayTest {
     assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> say.say(-1));
   }
 
-  //    @Disabled("Remove to run test")
+  //    @Disabled("Remove to run test") 999,999,999,999
   @Test
   void illegalTooBigNumber() {
     assertThatExceptionOfType(IllegalArgumentException.class)
         .isThrownBy(() -> say.say(1_000_000_000_000L));
+  }
+
+//  @Disabled("Remove to run test")
+  @Test
+  void breakUpIntoChunksOfThousands() {
+    assertThat(say.breakUpIntoChunksOfThousands(1234567890L)).isEqualTo(List.of(1L, 234L, 567L, 890L));
+    assertThat(say.breakUpIntoChunksOfThousands(1000L)).isEqualTo(List.of(1L, 0L));
   }
 }

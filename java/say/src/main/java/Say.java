@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
@@ -66,5 +67,23 @@ public class Say {
     if (isInRange(11, 19, number)) return TEENS.get((int) number);
     if (isInRange(1, 9, number) || isInRange(20, 99, number)) return fromOneToNinetyNine(number);
     return "";
+  }
+
+  public List<Long> breakUpIntoChunksOfThousands(long number) {
+    List<Long> chunks = new ArrayList<>();
+
+    // Handle special case when the number is 0
+    if (number == 0) {
+      chunks.add(0L);
+      return chunks;
+    }
+
+    while (number > 0) {
+      long chunk = number % 1000; // Extract last three digits
+      chunks.addFirst(chunk); // Add chunk to the beginning of the list
+      number /= 1000; // Remove last three digits
+    }
+
+    return chunks;
   }
 }
