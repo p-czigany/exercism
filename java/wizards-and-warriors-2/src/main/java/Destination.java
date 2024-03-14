@@ -18,8 +18,8 @@ public class Destination {
     this.inhabitants = inhabitants;
   }
 
-//  @Override
-//  public String toString() {
-//    return "%s, which has %d inhabitants".formatted(this.getName(), this.getInhabitants());
-//  }
+  @Override
+  public String toString() {
+    return "%s, which has %d inhabitants".formatted(this.getName(), this.getInhabitants());
+  }
 }
