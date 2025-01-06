@@ -17,10 +17,13 @@ impl Clock {
     }
 
     pub fn to_string(&self) -> String {
+        let normal = self.normal();
+        format!("{:02}:{:02}", normal.hours, normal.minutes)
+    }
+
+    fn normal(&self) -> Self {
         let total_minutes = self.hours * 60 + self.minutes;
-        let normalized_hours = total_minutes.div_euclid(60).rem_euclid(24);
-        let normalized_minutes = total_minutes.rem_euclid(60);
-        format!("{:02}:{:02}", normalized_hours, normalized_minutes)
+        Self::new(total_minutes.div_euclid(60).rem_euclid(24), total_minutes.rem_euclid(60))
     }
 }
 
