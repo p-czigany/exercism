@@ -8,10 +8,7 @@ pub struct Clock {
 
 impl Clock {
     pub fn new(hours: i32, minutes: i32) -> Self {
-        Clock {
-            hours,
-            minutes,
-        }
+        Clock { hours, minutes }
     }
 
     pub fn add_minutes(&self, minutes: i32) -> Self {
@@ -19,7 +16,10 @@ impl Clock {
     }
 
     fn normal(&self) -> Self {
-        Self::new(self.total_minutes().div_euclid(60).rem_euclid(24), self.total_minutes().rem_euclid(60))
+        Self::new(
+            self.total_minutes().div_euclid(60).rem_euclid(24),
+            self.total_minutes().rem_euclid(60),
+        )
     }
 
     fn total_minutes(&self) -> i32 {
@@ -35,6 +35,7 @@ impl fmt::Display for Clock {
 
 impl PartialEq for Clock {
     fn eq(&self, other: &Self) -> bool {
-        self.normal().hours == other.normal().hours && self.normal().minutes == other.normal().minutes
+        self.normal().hours == other.normal().hours
+            && self.normal().minutes == other.normal().minutes
     }
 }
