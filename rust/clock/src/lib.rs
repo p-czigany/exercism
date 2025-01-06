@@ -17,28 +17,20 @@ impl Clock {
     }
 
     pub fn to_string(&self) -> String {
-        let normal = self.normal();
-        format!("{:02}:{:02}", normal.hours, normal.minutes)
+        format!("{:02}:{:02}", self.normal().hours, self.normal().minutes)
     }
 
     fn normal(&self) -> Self {
-        let total_minutes = self.hours * 60 + self.minutes;
-        Self::new(total_minutes.div_euclid(60).rem_euclid(24), total_minutes.rem_euclid(60))
+        Self::new(self.total_minutes().div_euclid(60).rem_euclid(24), self.total_minutes().rem_euclid(60))
+    }
+
+    fn total_minutes(&self) -> i32 {
+        self.hours * 60 + self.minutes
     }
 }
 
 impl PartialEq for Clock {
     fn eq(&self, other: &Self) -> bool {
-        let self_total_minutes = self.hours * 60 + self.minutes;
-        let self_normalized_hours = self_total_minutes.div_euclid(60).rem_euclid(24);
-        let self_normalized_minutes = self_total_minutes.rem_euclid(60);
-
-        
-        let other_total_minutes = other.hours * 60 + other.minutes;
-        let other_normalized_hours = other_total_minutes.div_euclid(60).rem_euclid(24);
-        let other_normalized_minutes = other_total_minutes.rem_euclid(60);
-
-
-        self_normalized_hours == other_normalized_hours && self_normalized_minutes == other_normalized_minutes
+        self.normal().hours == other.normal().hours && self.normal().minutes == other.normal().minutes
     }
 }
