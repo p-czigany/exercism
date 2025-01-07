@@ -5,12 +5,12 @@
 
 **/HELP.md
 **/HINTS.md
-**/README.md
 **/TUTORIAL.md
 
 **/gradle
 **/gradlew.bat
 **/build
+**/.gradle/
 
 **/Gemfile.lock
 
