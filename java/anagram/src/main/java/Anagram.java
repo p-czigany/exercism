@@ -1,29 +1,29 @@
-import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 
 public class Anagram {
-
+    private final BiPredicate<String, String> anagrams;
+    private final BiPredicate<String, String> notSimilar;
     private final String baseWord;
-    private final char[] sortedBaseLetters;
 
-    public Anagram(String baseWord) {
-        this.baseWord = baseWord.toLowerCase();
-        this.sortedBaseLetters = toSortedCharArray(baseWord);
+    public Anagram(final String baseWord,
+                   final BiPredicate<String, String> anagrams,
+                   final BiPredicate<String, String> notSimilar) {
+        this.baseWord = baseWord;
+        this.anagrams = anagrams;
+        this.notSimilar = notSimilar;
     }
 
-    public List<String> match(List<String> list) {
+    public Anagram(final String baseWord) {
+        this(baseWord, new Anagrams(), new NotEqualsIgnoreCase());
+    }
+
+    public List<String> match(final List<String> list) {
 
         return list.stream()
-                .filter(word -> !baseWord.equalsIgnoreCase(word))
-                .filter(word -> Arrays.equals(sortedBaseLetters, toSortedCharArray(word)))
+                .filter(candidate -> notSimilar.test(baseWord, candidate))
+                .filter(candidate -> anagrams.test(baseWord, candidate))
                 .collect(Collectors.toList());
     }
-
-    private char[] toSortedCharArray(String word) {
-        char[] letters = word.toLowerCase().toCharArray();
-        Arrays.sort(letters);
-        return letters;
-    }
-
 }
