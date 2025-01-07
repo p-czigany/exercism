@@ -7,10 +7,5 @@
 **/HINTS.md
 **/TUTORIAL.md
 
-**/gradle
-**/gradlew.bat
-**/build
-**/.gradle/
-
 **/Gemfile.lock
 
