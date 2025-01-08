@@ -6,8 +6,8 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
 
     possible_anagrams
         .iter()
-        .filter(|&candidate| (not_similar)(&word, candidate))
-        .filter(|&candidate| (anagrams)(&word, candidate))
+        .filter(|&candidate| (not_similar)(word, candidate))
+        .filter(|&candidate| (anagrams)(word, candidate))
         .cloned()
         .collect()
 }
